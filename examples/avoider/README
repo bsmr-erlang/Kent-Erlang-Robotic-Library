@@ -1,0 +1,21 @@
+README
+======
+
+This is a simple wall avoider robot.
+It will travel around the world hopefully stopping before hitting a wall.
+Then it will rotate until it can avoid the wall.
+
+
+USAGE
+=====
+
+To run the demo in the erlang shell type
+
+> avoid:demo().
+
+Enjoy
+
+AUTHORS
+=======
+
+Thomas Lorentsen
