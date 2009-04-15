@@ -30,7 +30,7 @@ init(Rid) ->
 travel(Rid) ->
 	
 	receive
-		{collision, true} ->
+		{collision, true, _} ->
 			rotate(Rid);
 		{collision,false} ->
 			mvh:move(Rid, speed, 0.5),
@@ -40,8 +40,8 @@ travel(Rid) ->
 % rotates the robot until there is no wall
 rotate(Rid) ->
 	receive
-		{collision, true} ->
-			mvh:rotate(Rid, speed, 10),
+		{collision, true, Direction} ->
+			mvh:rotate(Rid, speed, 10/Direction),
 			rotate(Rid);
 		{collision,false} ->
 			travel(Rid)
@@ -50,13 +50,19 @@ rotate(Rid) ->
 
 % notifies the mover process if there are any walls or not
 collision(Pid, Rid) ->
-	{_, Res} = dvh:read_lasers(Rid),
-	is_collision(Pid, lists:min(Res)),
-	receive _ -> nothing after 1000 -> nothing end,
+	{Left, Right} = split_lasers( dvh:read_lasers(Rid)),
+	is_collision(Pid, lists:min(lists:sublist(lists:reverse(Left),90)), lists:min(lists:sublist(Right,90))),
+	receive _ -> nothing after 500 -> nothing end,
 	collision(Pid, Rid).
 
+split_lasers({_, Res}) ->
+	lists:split(erlang:trunc( string:len(Res)/2),Res).
+
+
 % a simple collision detector
-is_collision(Pid, Min) when Min < 2 ->
-	Pid ! {collision, true};
-is_collision(Pid, _) ->
+is_collision(Pid, LeftMin, _) when LeftMin < 1 ->
+	Pid ! {collision, true, 1};
+is_collision(Pid, _, RightMin) when RightMin < 1 ->
+	Pid ! {collision, true, -1};
+is_collision(Pid, _, _) ->
 	Pid ! {collision, false}.
