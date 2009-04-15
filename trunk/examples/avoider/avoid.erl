@@ -26,33 +26,23 @@ init(Rid) ->
 	Pid.
 
 
-% Moves the robot until a wall is found
+% Moves the robot until a wall is found where it will be rotated
 travel(Rid) ->
 	
 	receive
-		{collision, true, _} ->
-			rotate(Rid);
-		{collision,false} ->
-			mvh:move(Rid, speed, 0.5),
-			travel(Rid)
-	end.
-
-% rotates the robot until there is no wall
-rotate(Rid) ->
-	receive
 		{collision, true, Direction} ->
-			mvh:rotate(Rid, speed, 10/Direction),
-			rotate(Rid);
+			mvh:rotate(Rid, speed, 10/Direction);
 		{collision,false} ->
-			travel(Rid)
-	end.
+			mvh:move(Rid, speed, 0.5)			
+	end,
+	travel(Rid).
 
 
 % notifies the mover process if there are any walls or not
 collision(Pid, Rid) ->
 	{Left, Right} = split_lasers( dvh:read_lasers(Rid)),
 	is_collision(Pid, lists:min(lists:sublist(lists:reverse(Left),90)), lists:min(lists:sublist(Right,90))),
-	receive _ -> nothing after 500 -> nothing end,
+	timer:sleep(500),
 	collision(Pid, Rid).
 
 split_lasers({_, Res}) ->
