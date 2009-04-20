@@ -9,7 +9,7 @@
 
 -export([demo/0, travel/1, collision/2]).
 
-%starts up a simple demo of 1 robot
+% runs simple wall avoider with a single robot
 demo() ->
     code:add_path("../../module/"),code:add_path("../../ebin/"),
     init(rih:init( mrh:start(), 0)).
@@ -17,12 +17,12 @@ demo() ->
 init({error, Error}) ->
     io:format("Error: ~p~n", [Error]);
 
-%spawns the 2 required servers to run
+% Spawns the collision and movement processes
 init(Rid) ->
     spawn(?MODULE, collision, [Pid = spawn(?MODULE, travel, [Rid]), Rid]),
     Pid.
 
-% Moves the robot until a wall is found where it will be rotated
+% Controls the robots movements
 travel(Rid) ->	
     receive
 	{collision, true} ->
@@ -33,14 +33,14 @@ travel(Rid) ->
     travel(Rid).
 
 
-% notifies the mover process if there are any walls or not
+% Reads the lasers and checks for collisions
 collision(Pid, Rid) ->
     {_, Results} = dvh:read_lasers(Rid),
     is_collision(Pid, lists:min(lists:sublist(Results, 90, 180))),
     timer:sleep(500),
     collision(Pid, Rid).
 
-% a simple collision detector
+% A simple collision detector using the smallest laser result
 is_collision(Pid, Min) when Min < 1 ->
     Pid ! {collision, true};
 is_collision(Pid, _) ->
