@@ -36,7 +36,7 @@ travel(Rid) ->
 % notifies the mover process if there are any walls or not
 collision(Pid, Rid) ->
     {_, Results} = dvh:read_lasers(Rid),
-    is_collision(Pid, lists:min(Results)),
+    is_collision(Pid, lists:min(lists:sublist(Results, 90, 180)),
     timer:sleep(500),
     collision(Pid, Rid).
 
