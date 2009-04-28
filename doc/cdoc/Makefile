@@ -2,5 +2,5 @@ all:
 	doxygen
 
 clean:
-	rm [^MD]*
+	rm -f [^MD]*
 
