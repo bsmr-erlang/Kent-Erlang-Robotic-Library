@@ -2,7 +2,7 @@ all:
 	$(MAKE) edoc
 
 clean:
-	rm [^MD]*
+	rm -f [^MD]*
 
 edoc:
 	cp ../../module/*.erl .
