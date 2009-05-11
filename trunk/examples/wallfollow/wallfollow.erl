@@ -5,7 +5,7 @@
 %%%               Make this work better.
 %%% Created : 14 Apr 2009 by Thomas Lorentsen
 
--module(avoid).
+-module(wallfollow).
 
 -export([demo/0, travel/1, collision/2]).
 
