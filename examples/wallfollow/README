@@ -1,7 +1,7 @@
 README
 ======
 
-This is a simple wall avoider robot.
+This is a simple wall avoider/follower robot.
 Using the simple.cfg example provided by Stage it should use the front lasers to detect 
 any walls.  Once the walls are within 1 meter it will rotate one direction only.
 
@@ -27,7 +27,7 @@ USAGE
 
 To run the demo in the erlang shell type
 
-> avoid:demo().
+> wallfollower:demo().
 
 Enjoy
 

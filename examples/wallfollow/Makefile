@@ -1,7 +1,7 @@
 .SUFFIXES: .erl .beam .yrl
 
 CC=erlc 
-MODS= avoid
+MODS= wallfollow
 OPTS= -W
 
 .erl.beam:
