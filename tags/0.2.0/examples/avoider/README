@@ -1,0 +1,38 @@
+README
+======
+
+This is a simple wall avoider robot.
+Using the simple.cfg example provided by Stage it should use the front lasers to detect 
+any walls.  Once the walls are within 1 meter it will rotate one direction only.
+
+
+SET UP
+====
+
+The example has been tested to work on the simple world provided with Stage.
+To use this demo run the erlang shell in this directory or with the KERL modules in a 
+directory visible to erlang.
+Run Player on the local machines or refer to the documention on how to set rih:init to 
+locate Player on a remote machine.
+
+
+BUILD
+====
+
+Run 'make' in the shell to compile
+
+
+USAGE
+=====
+
+To run the demo in the erlang shell type
+
+> avoid:demo().
+
+Enjoy
+
+
+AUTHORS
+=======
+
+Thomas Lorentsen
