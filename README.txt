@@ -20,7 +20,7 @@ INSTALLATION
 
 
 Installation is not currently supported yet.
-Please refer to ./INSTALL
+Please refer to ./INSTALL.txt
 
 
 DOCUMENTATION
@@ -53,11 +53,14 @@ doc				- Source Documentation
 ebin			- Erlang compiled modules
 examples	  	- Example erlang programs
 include 	  	- Include files
-kerlplayerlib 	- Player driver library
+kerlplayerlib 		- Player driver library
 module 			- Module source code
 testing			- Unit testing
-worlds			- Player world configurations for testing
+stage			- Stage world configurations for testing
 
+USAGE & EXAMPLE
+===============
+Reffer to INSTALL.txt for more information
 
 AUTHORS
 =======
