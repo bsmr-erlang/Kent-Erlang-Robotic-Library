@@ -7,10 +7,10 @@
 
 -module(wallfollow).
 
--export([demo/0, travel/1, collision/2]).
+-export([start/0, travel/1, collision/2]).
 
 % runs simple wall avoider with a single robot
-demo() ->
+start() ->
     code:add_path("../../module/"),code:add_path("../../ebin/"),
     init(rih:init( mrh:start(), 0)).
 
@@ -28,7 +28,7 @@ travel(Rid) ->
 	{collision, true} ->
 	    mvh:rotate(Rid, speed, 10);
 	{collision,false} ->
-	    mvh:move(Rid, speed, 0.5)			
+	    mvh:move(Rid, speed, 0.4)			
     end,
     travel(Rid).
 
@@ -36,12 +36,12 @@ travel(Rid) ->
 % Reads the lasers and checks for collisions
 collision(Pid, Rid) ->
     {_, Results} = dvh:read_lasers(Rid),
-    is_collision(Pid, lists:min(lists:sublist(Results, 90, 180))),
+    is_collision(Pid, lists:min(lists:sublist(Results, 100, 160))),
     timer:sleep(500),
     collision(Pid, Rid).
 
 % A simple collision detector using the smallest laser result
-is_collision(Pid, Min) when Min < 1 ->
+is_collision(Pid, Min) when Min < 1.2 ->
     Pid ! {collision, true};
 is_collision(Pid, _) ->
     Pid ! {collision, false}.
