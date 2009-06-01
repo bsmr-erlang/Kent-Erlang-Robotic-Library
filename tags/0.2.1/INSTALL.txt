@@ -100,7 +100,7 @@ EXAMPLE
 
 To test multibouncer run its Stage world file and than start it from Erlang.
 
-# player worlds/multibouncer.cfg > /dev/null 2> /dev/null &
+# player stage/multibouncer.cfg > /dev/null 2> /dev/null &
 # cd ./examples/
 # erl +A24
 1> multibouncer:start(). 
