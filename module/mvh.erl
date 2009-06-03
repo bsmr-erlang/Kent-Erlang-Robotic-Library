@@ -29,14 +29,14 @@
 -module(mvh).
 
 -import(mrh, [call_port/2]).
--export([move/2,move/3,rotate/3]).
+-export([move/3,rotate/3]).
 -export([get_position/1]).
 
 
 %% lowest level move command
 % Simply just fowards to callport
-move(RobotId, Command) ->
-	call_port(RobotId, Command).
+%move(RobotId, Command) ->
+%	call_port(RobotId, Command).
 
 
 %% @doc Provides several ways of moving the robot.
@@ -64,8 +64,14 @@ move(RobotId, difference, {X, Y, A}) ->
 move(RobotId, position, {X, Y, A}) ->
 	call_port(RobotId, {move, position, X, Y, A}).
 
-%% Low level rotate commands
+%% @doc Rotate the robot by degrees or speed.
+%% Rotating by degrees is relative.
+%% It keep rotating until it has reached the direction it needs.
+%% Rotating by speed will make the robot rotate at a fixed speed.
+%% It will keep rotating until it is stopped by using another movement function.
 %% rotate by amount of degrees
+%% @spec rotate(RobotID::pid(), rotationmode(), float()) -> ok | {error, atom}
+%% @type rotationmode() = degrees | speed
 rotate(RobotId, degrees, Degrees) ->
 	call_port(RobotId, {rotate, degrees, Degrees});
 %% rotate at speed
@@ -73,7 +79,8 @@ rotate(RobotId, speed, Speed) ->
 	call_port(RobotId, {rotate, speed, Speed}).
 
 
-%% new method with right syntax
+%% @doc Gets the position of the robot.
+%% @spec get_position(RobotID:pid()) -> {X::float(), Y::float(), A::float()}
 get_position(RobotId) ->
     call_port(RobotId, {get_position}).
 

@@ -36,6 +36,7 @@
 
 %% @doc Solves triangle sides from angle and hypotenuse.
 %% This allows to calculate where a wall is on a map
+%% @spec solve_ah(float(), float()) -> {Sine::float(), Cosine::float(), Hypotenuse::float()}
 solve_ah(Angle, Hypotenuse) ->
 	{sin(deg2rad(Angle))*Hypotenuse, cos(deg2rad(Angle))*Hypotenuse, Hypotenuse}.
 	
