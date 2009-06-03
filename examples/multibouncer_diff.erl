@@ -20,7 +20,7 @@ start() ->
 	%start multi-robot module
 	Pid = multi:start(),
 	%create 4 bouncers
-	lists:map(fun(X) -> multi:create_robot(Pid, ?MODULE, thread, [Pid, Driver, X]) end, lists:seq(1,4,1)),
+	lists:map(fun(X) -> multi:create_robot(Pid, ?MODULE, thread, [Pid, Driver, X]) end, lists:seq(0,3,1)),
 	ok.
 
 thread(Dispatcherid, Driver, Playerid) ->

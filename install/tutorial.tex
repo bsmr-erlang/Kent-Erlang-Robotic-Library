@@ -2,7 +2,7 @@
 
 \title{Installing Player/Stage on a Ubuntu server running in VMware Player}
 \author{Sten Gr\"{u}ner}
-\date{25.10.2008}
+\date{03.06.2009}
 
 %%for urls
 \usepackage{hyperref} 
@@ -30,7 +30,7 @@ We recommend to download the pre-installed VM instead of installing Ubuntu from 
 \section{Ubuntu cofiguration}
 Login using user name \texttt{user} and password \texttt{user}. 
 \\Obtain the configuration script made by Tom (\$ symbolizes the terminal promt): 
-\prompt{wget http://www.fillin.com/installvm.sh}
+\prompt{wget http://kerl.svn.sourceforge.net/viewvc/kerl/trunk/install/installvm.sh}
 Make the script executable:
 \prompt{chmod a+x installvm.sh}
 Start the script (root password is \texttt{user}):
@@ -44,7 +44,7 @@ After reboot you should see a login screen on xfce. After logging in add a task 
 
 \section{Player/Stage}
 Start a terminal window: right-click on desktop, select "Accessories" $\to$ "Terminal". Download the installation script:
-\prompt{wget http://www.fillin.com/installps.sh}
+\prompt{wget http://kerl.svn.sourceforge.net/viewvc/kerl/trunk/install/installps.sh}
 Make the script executable:
 \prompt{chmod a+x installps.sh}
 Start the script:

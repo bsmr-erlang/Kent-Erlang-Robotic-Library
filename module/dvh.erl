@@ -29,11 +29,17 @@
 -module(dvh).
 
 -import(mrh, [call_port/2]).
--export([read_lasers/1,read/2]).
+-export([read_lasers/1,read/2, results/2]).
 -export([read_robots/2,read_devices/2]).
 -export([pread_robots/2,pread_robots/3]).
 -export([find_value/2]).
 
+
+%% @doc duplication of read for naming consitancy with player
+%% Devices supported: lasers
+%% @spec (RobotId::pid(), Device::atom()) -> Results::tuple() | {error, no_such_device}
+results(Rid, Device) ->
+	read(Rid, Device).
 
 %% @doc Read device of a robot.
 %% Pass in the robot pid and an atom of the device name
@@ -46,10 +52,11 @@ read(_,_) ->
 	{error,no_such_device}.
 
 
-%% @doc Reads the lasers and returns a list of results
+%% @doc Reads the lasers and returns a list of results. *Duplication of results() for back-compatiblity reasions*
 %% @spec (RobotID::pid()) -> {Lasers::list(), Bearings::list()}
 read_lasers(Rid) ->
 	call_port(Rid, {results, lasers}).
+
 
 
 %% @doc Reads multiple devices from the robot

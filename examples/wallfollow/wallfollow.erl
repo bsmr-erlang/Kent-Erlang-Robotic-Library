@@ -28,20 +28,20 @@ travel(Rid) ->
 	{collision, true} ->
 	    mvh:rotate(Rid, speed, 10);
 	{collision,false} ->
-	    mvh:move(Rid, speed, 0.4)			
+	    mvh:move(Rid, speed, 0.5)			
     end,
     travel(Rid).
 
 
 % Reads the lasers and checks for collisions
 collision(Pid, Rid) ->
-    {_, Results} = dvh:read_lasers(Rid),
-    is_collision(Pid, lists:min(lists:sublist(Results, 100, 160))),
-    timer:sleep(500),
+    {_, Results} = dvh:results(Rid, lasers),
+    is_collision(Pid, lists:min(lists:sublist(Results, 90, 180))),
+    timer:sleep(50),
     collision(Pid, Rid).
 
 % A simple collision detector using the smallest laser result
-is_collision(Pid, Min) when Min < 1.2 ->
+is_collision(Pid, Min) when Min < 1 ->
     Pid ! {collision, true};
 is_collision(Pid, _) ->
     Pid ! {collision, false}.
