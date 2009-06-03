@@ -80,7 +80,7 @@ rotate(RobotId, speed, Speed) ->
 
 
 %% @doc Gets the position of the robot.
-%% @spec get_position(RobotID:pid()) -> {X::float(), Y::float(), A::float()}
+%% @spec get_position(RobotID::pid()) -> {X::float(), Y::float(), A::float()}
 get_position(RobotId) ->
     call_port(RobotId, {get_position}).
 
