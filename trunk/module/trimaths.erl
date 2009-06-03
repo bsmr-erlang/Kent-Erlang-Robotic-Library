@@ -55,12 +55,13 @@ results_to_triangle([Laser|Lasers], Degrees, Inc) ->
     [solve_ah(Degrees, Laser)] ++ results_to_triangle(Lasers, Degrees+Inc, Inc).
 
 
-%% @doc convert degrees to radians
-%% @spec Degrees::float() -> Radians::float()
+%% @doc convert degrees to radians.
+%% @spec deg2rad(Degrees::float()) -> Radians::float()
 deg2rad(Deg) ->
 	Deg * pi()/180.
 
-%% @doc convert radians to degrees
-%% @spec Radians::float() -> Degrees::float()
+
+%% @doc convert radians to degrees.
+%% @spec rad2deg(Radians::float()) -> Degrees::float()
 rad2deg(Rad) ->
 	Rad * 180 / pi().
