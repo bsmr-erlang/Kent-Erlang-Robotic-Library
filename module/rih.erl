@@ -141,7 +141,7 @@ destroy(Robotid) ->
 
 %% @doc initiates a list of robots in parallel.
 %% Returns a list of robots.
-%% @spec plinit(DriverID:pid(), Robots::list(), Config::list()) -> RobotID::pid()
+%% @spec plinit(DriverID::pid(), Robots::list(), Config::list()) -> RobotID::pid()
 plinit(Pid, Robots, AutoConf) ->
 	% will spawn a initiator for each robot
 	[ spawn(rih,plinit,[self(), Pid, [Robot], AutoConf]) || Robot <- Robots],
