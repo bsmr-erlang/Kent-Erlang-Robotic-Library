@@ -6,7 +6,6 @@ CFLAGS= -Wall -fPIC -shared
 
 ## DEFINITIONS
 # DEBUG switch on debugging
-# BENCHMARKING runs some benchmarks
 #CFLAGS+= -DDEBUG
 
 K_INCLUDE= -I../include
