@@ -56,11 +56,11 @@ results_to_triangle([Laser|Lasers], Degrees, Inc) ->
 
 
 %% @doc convert degrees to radians
-%% @spec Degrees::float() -> Radians:float()
+%% @spec Degrees::float() -> Radians::float()
 deg2rad(Deg) ->
 	Deg * pi()/180.
 
 %% @doc convert radians to degrees
-%% @spec Radians::float() -> Degrees:float()
+%% @spec Radians::float() -> Degrees::float()
 rad2deg(Rad) ->
 	Rad * 180 / pi().

@@ -158,7 +158,7 @@ reply() ->
 
 %% @doc initiates a list of robots in parallel.
 %% Passes the list of messages to the caller process.
-%% @spec plinit(Caller::pid(), DriverID:pid(), Robots::list(), Config::list()) -> RobotID::pid()
+%% @spec plinit(Caller::pid(), DriverID::pid(), Robots::list(), Config::list()) -> RobotID::pid()
 plinit(Caller,_, [], _) ->
 	Caller ! {Caller,[]};
 plinit(Caller, Pid, [Conf|Robots], AutoConf) ->
