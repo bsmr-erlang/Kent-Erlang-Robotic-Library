@@ -35,20 +35,24 @@
 
 -import(mrh, [call_port/2]).
 
-%% Initiates a robot server using the ID
-%% Returns a PID of the server
+%% @doc Initiates a robot by its player index number.
+%% The Robot ID is returned on successful initialisation.
+%% @spec init(DriverID::pid(), Index::integer()) -> RobotID::pid()
 init(Pid, Id) ->
 	init(Pid, "localhost", 6665, Id).
 
-%% Initiates a robot server using the Host, Port and Id
-%% Returns the PID of the server
+%% @doc Initiates a robot by its hostname, port number and index number.
+%% The Robot ID is returned on successful initialisation.
+%% @spec init(DriverID::pid(), Hostname::string(), Port::integer(), Index::integer()) -> RobotID::pid()
 init(Pid, Host, Port, Id) ->
 	init(Pid, Host, Port, Id, genNickname(Host, Port, Id)).
 	
 
-%% Initiates the a robot server
-%% Creates the robot
-%% Returns the PID of the server or error
+%% @doc Initiates a robot by its hostname, port number and index number.
+%% The Robot ID is returned on successful initialisation.
+%% This function allows by passing the auto generation of the nickname used to identify the robot inside the driver.
+%% This name must be unique otherwise an error will be returned.
+%% @spec init(DriverID::pid(), Hostname::string(), Port::integer(), Index::integer(), Nickname::string()) -> RobotID::pid()
 init(Pid, Hostname, Port, Id, Nickname) ->
 	create(Pid, {Hostname, Port, Id, Nickname}).
 
@@ -76,16 +80,20 @@ genNickname(Host, Port, Id) ->
 	Host++":"++integer_to_list(Port)++":"++integer_to_list(Id)++":"++genPseudoRandomHexId().
 
 
-%% Takes a list of tuples containing robot init config
-%% Will initiate multiple robot servers
-%% Returns a list of PIDs
+%% @doc Initalise a list of robots.
+%% Each item can consist of either an index number of a tuples of any of the following:
+%% {Index} 
+%% {Hostname, Port, Index} 
+%% {Hostname, Port, Index, Nickname} 
+%% A list of RobotIDs are returned.
+%% @spec linit(DriverID::pid(), Configs::list()) -> RobotID::list()
 linit(_,[]) ->
 	[];
 linit(Pid, [Conf|Robots]) ->
 	[deconfig(Pid, Conf)]++linit(Pid, Robots).
 
-%% Takes A Pid, list of robots and a list of auto configs
-%% returns a list of pid's
+%% @doc Initiates a list of robots using a common configuration.
+%% A list of RobotIDs are returned.
 linit(_, [], _) ->
     [];
 % auto configs and then inits
@@ -130,7 +138,10 @@ autoconfig(Pid, AutoConf, Id) ->
 destroy(Robotid) ->
 	call_port(Robotid, {destroy}).
 
-%% initiates all robots in parallel and returns a list of pids
+
+%% @doc initiates a list of robots in parallel.
+%% Returns a list of robots.
+%% @spec plinit(DriverID:pid(), Robots::list(), Config::list()) -> RobotID::pid()
 plinit(Pid, Robots, AutoConf) ->
 	% will spawn a initiator for each robot
 	[ spawn(rih,plinit,[self(), Pid, [Robot], AutoConf]) || Robot <- Robots],
@@ -145,8 +156,9 @@ reply() ->
 	end.
 
 
-%% auto configs and then inits in parallel
-%% Returns back to the caller a list of pids
+%% @doc initiates a list of robots in parallel.
+%% Passes the list of messages to the caller process.
+%% @spec plinit(Caller::pid(), DriverID:pid(), Robots::list(), Config::list()) -> RobotID::pid()
 plinit(Caller,_, [], _) ->
 	Caller ! {Caller,[]};
 plinit(Caller, Pid, [Conf|Robots], AutoConf) ->
