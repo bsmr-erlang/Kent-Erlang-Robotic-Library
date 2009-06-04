@@ -29,14 +29,14 @@
 -module(mvh).
 
 -import(mrh, [call_port/2]).
--export([move/3,rotate/3]).
+-export([move/2,move/3,rotate/3]).
 -export([get_position/1]).
 
 
 %% lowest level move command
-% Simply just fowards to callport
-%move(RobotId, Command) ->
-%	call_port(RobotId, Command).
+%% Simply just fowards to callport
+move(RobotId, Command) ->
+	call_port(RobotId, Command).
 
 
 %% @doc Provides several ways of moving the robot.
