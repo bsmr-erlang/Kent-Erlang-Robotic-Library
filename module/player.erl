@@ -30,15 +30,15 @@
 %%%  <br/>Originally the functionality was provided by module itself but, now it
 %%%  uses the low-level modules.
 %%%  This naive module can only control 1 robot per process.
-%%%  Please note that most of the movement functions are artificially made blocking
-%%%  in the player module. 
+%%%  Please note that most of the movement functions are artificially made 
+%%%  blocking in the player module. 
 %%%
 
 -module(player).
 
 -include("../include/common.hrl").
 
--export([start/0, init/2, init/4, init/5, destroy/0, rotate/2, move/2, get_position/0, results/1, set_option/2, get_pid/0]).
+-export([start/0, init/2, init/4, init/5, destroy/0, rotate/2, move/2, stop/0, get_position/0, results/1, set_option/2, get_pid/0]).
 
 %% @doc Starts the server. Usually the first commant to run.
 %% Returns the pid to the server to allow communication to the driver.
@@ -153,6 +153,13 @@ move(Type, Value) ->
 				_ ->
 					ok
 			end.
+
+
+%% @doc stops a moving robot.
+%% @spec stop() -> ok
+stop() ->
+    mvh:move(erlang:get(pid), {move, speed, 0}).
+
 
 %% @doc This function gets the results of selected device, for device list
 %% please consult the documentation of the dvh module.

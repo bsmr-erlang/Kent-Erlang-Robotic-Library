@@ -29,7 +29,7 @@
 -module(mvh).
 
 -import(mrh, [call_port/2]).
--export([move/2,move/3,rotate/3]).
+-export([move/2,move/3,stop/1,rotate/3]).
 -export([get_position/1]).
 
 
@@ -44,6 +44,7 @@ move(RobotId, Command) ->
 %% Supports: distance, speed, full, difference, position.
 %% It also supports a list of RobotIds.
 %% @spec (RobotId, Type::atom(), Params::tuple()) -> ok
+%% @type movemode() = distance | speed | full | difference | position
 move([], _, _) ->
 	[];
 move([RobotId|M], Type, Params) ->
@@ -65,6 +66,13 @@ move(RobotId, difference, {X, Y, A}) ->
 move(RobotId, position, {X, Y, A}) ->
 	call_port(RobotId, {move, position, X, Y, A}).
 
+
+%% @doc stops a moving robot.
+%% @spec stop() -> ok
+stop(RobotId) ->
+    mvh:move(RobotId, speed, 0).
+
+
 %% @doc Rotate the robot by degrees or speed.
 %% Rotating by degrees is relative.
 %% It keep rotating until it has reached the direction it needs.
@@ -80,8 +88,10 @@ rotate(RobotId, speed, Speed) ->
 	call_port(RobotId, {rotate, speed, Speed}).
 
 
-%% @doc Gets the position of the robot.
-%% @spec get_position(RobotID::pid()) -> {X::float(), Y::float(), A::float()}
+%% @doc Reads the robot odometer.
+%% The inital odometer is set to {0,0,0} and will track the position of the 
+%% robot from its starting position.
+%% @spec get_position(RobotID::pid()) -> {X::float(), Y::float(), Radians::float()} | {error, atom()}
 get_position(RobotId) ->
     call_port(RobotId, {get_position}).
 

@@ -99,6 +99,7 @@ wait_for_port_ready(SharedLib, Timeout) ->
 %% @doc Initiates the port server to allow messages passed to it.
 %% It will return a pid to the driver allowing communication.
 %% @spec init(pid(), string()) -> {ok, pid()} | {error, atom()}
+%% @private
 init(Pid, SharedLib) ->
     Port = open_port({spawn, SharedLib}, []),
     ?DBUG("Driver Loaded"),
