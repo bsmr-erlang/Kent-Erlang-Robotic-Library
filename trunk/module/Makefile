@@ -15,4 +15,4 @@ install:
 	cp *.beam ../ebin/
 
 clean:
-	rm -f  {.,../ebin}/*.beam {.,../ebin}/erl_crash.dump \#* *~
+	rm -f *.beam  {.,../ebin}/*.beam {.,../ebin}/erl_crash.dump \#* *~
