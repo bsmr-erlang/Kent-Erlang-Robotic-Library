@@ -34,6 +34,8 @@
 
 
 %% @doc Passes the command to the driver.
+%% @spec move(RobotId:pid(), Command:tuple()) -> ok
+%% @deprecated using {@link mrh:call_port/2} will produce same results 
 move(RobotId, Command) ->
 	call_port(RobotId, Command).
 
