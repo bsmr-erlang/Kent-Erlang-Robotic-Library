@@ -33,8 +33,7 @@
 -export([get_position/1]).
 
 
-%% lowest level move command
-%% Simply just fowards to callport
+%% @doc Passes the command to the driver.
 move(RobotId, Command) ->
 	call_port(RobotId, Command).
 
