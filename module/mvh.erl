@@ -55,6 +55,9 @@ move(RobotId, distance, Distance) ->
 %% move by speed
 move(RobotId, speed, Speed) ->
 	call_port(RobotId, {move, speed, Speed});
+%% stops the robot when traveling by speed
+move(RobotId, speed, stop) ->
+	call_port(RobotId, {move, speed, 0});
 %% move by speed and rotation
 move(RobotId, full, {Speed, Rotation}) ->
 	call_port(RobotId, {move, speed, Speed, Rotation});
@@ -67,7 +70,7 @@ move(RobotId, position, {X, Y, A}) ->
 	call_port(RobotId, {move, position, X, Y, A}).
 
 
-%% @doc stops a moving robot.
+%% @doc Stops a moving robot.
 %% @spec stop() -> ok
 stop(RobotId) ->
     mvh:move(RobotId, speed, 0).
