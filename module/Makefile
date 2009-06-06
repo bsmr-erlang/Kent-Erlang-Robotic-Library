@@ -14,7 +14,7 @@ MODS= $(OUTDIR)/driver \
 	$(OUTDIR)/comm
 
 EFLAGS= -W -o $(OUTDIR) +warn_unused_vars +nowarn_shadow_vars +warn_unused_import
-#OPTS+= -Ddebug -W
+#OPTS+= -Ddebug
 # debug turns debugging on
 
 $(OUTDIR)/%.beam:	%.erl
@@ -23,7 +23,7 @@ $(OUTDIR)/%.beam:	%.erl
 all: ${MODS:%=%.beam}
 
 install:
-	cp *.beam ../ebin/
+	echo skip
 
 clean:
 	rm -f *.beam  {.,../ebin}/*.beam {.,../ebin}/erl_crash.dump \#* *~

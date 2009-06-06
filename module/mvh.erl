@@ -52,12 +52,12 @@ move([RobotId|M], Type, Params) ->
 %% move by distance
 move(RobotId, distance, Distance) ->
 	call_port(RobotId, {move, distance, Distance});
-%% move by speed
-move(RobotId, speed, Speed) ->
-	call_port(RobotId, {move, speed, Speed});
 %% stops the robot when traveling by speed
 move(RobotId, speed, stop) ->
 	call_port(RobotId, {move, speed, 0});
+%% move by speed
+move(RobotId, speed, Speed) ->
+	call_port(RobotId, {move, speed, Speed});
 %% move by speed and rotation
 move(RobotId, full, {Speed, Rotation}) ->
 	call_port(RobotId, {move, speed, Speed, Rotation});
