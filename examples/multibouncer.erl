@@ -8,7 +8,7 @@
 %%%-------------------------------------------------------------------
 
 -module(multibouncer).
--export([start/0, thread/3]).
+-export([start/0, main/3]).
 
 start() ->
 	%add path to the modules
@@ -18,10 +18,10 @@ start() ->
 	%start multi-robot module
 	Pid = multi:start(),
 	%create 4 bouncers
-	lists:map(fun(X) -> multi:create_robot(Pid, ?MODULE, thread, [Pid, Driver, X]) end, lists:seq(0,3,1)),
+	lists:map(fun(X) -> multi:create_robot(Pid, ?MODULE, main, [Pid, Driver, X]) end, lists:seq(0,3,1)),
 	ok.
 
-thread(Dispatcherid, Driver, Playerid) ->
+main(Dispatcherid, Driver, Playerid) ->
 	%init robot
 	player:init(Driver, Playerid),
 	%======EXAMPLE`S CONFIG======
@@ -41,19 +41,20 @@ loop(Dispatcherid, Speed) ->
 
 % keeps traveling until it finds a wall
 travel(Dispatcherid, Speed) ->
-	receive
-		{_, {stop}} ->
-				%stop
-				player:move(speed, 0),
-				%We have to vote to determine a leader
-				%I do not want to become one so I am not interested in result
-				multi:vote(Dispatcherid, false),
-				%Do the slave part
-				slave()
-		%wait 40 ms
-		after 40 ->
-				{_, Results} = player:results(lasers),
-				case bouncer:is_close(bouncer:sublasers(center, Results)) of
+    receive
+	{_, {stop}} ->
+	    player:stop(),
+						%We have to vote to determine a leader
+						%I do not want to become one so I am not interested in result
+	    multi:vote(Dispatcherid, false),
+	    % Discard received duplicates
+	    comm:discard({stop}),
+						%Do the slave part
+	    slave()
+						%wait 40 ms
+    after 40 ->
+	    {_, Results} = player:results(lasers),
+	    case lists:min(Results) < 1 of
 				%no obstacle found -> keep moving
 				false ->
 					player:move(speed, Speed),
@@ -63,7 +64,7 @@ travel(Dispatcherid, Speed) ->
 					%alert companions
 					multi:broadcast(Dispatcherid, {stop}),
 					%stop
-					player:move(speed, 0),
+					player:stop(),
 					%save my pid
 					MyPid = self(),
 					%Participate in a voting as leader-candidate
