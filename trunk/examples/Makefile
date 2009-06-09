@@ -2,7 +2,8 @@
 
 CC=erlc 
 MODS= masterslave bouncer multibouncer_time multibouncer_diff multibouncer snake simple
-OPTS= -Ddebug -W
+OPTS= -W
+OPTS+= -Debug
 
 .erl.beam:
 	$(CC) $(OPTS) $<
