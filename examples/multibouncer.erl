@@ -42,19 +42,19 @@ loop(Dispatcherid, Speed) ->
 % keeps traveling until it finds a wall
 travel(Dispatcherid, Speed) ->
     receive
-	{_, {stop}} ->
-	    player:stop(),
-						%We have to vote to determine a leader
-						%I do not want to become one so I am not interested in result
-	    multi:vote(Dispatcherid, false),
-	    % Discard received duplicates
-	    comm:discard({stop}),
-						%Do the slave part
-	    slave()
-						%wait 40 ms
+		{_, {stop}} ->
+			player:stop(),
+			% We have to vote to determine a leader
+			% I do not want to become one so I am not interested in result
+			multi:vote(Dispatcherid, false),
+			% Discard received duplicates
+			comm:discard({stop}),
+			%Do the slave part
+			slave()
+			%wait 40 ms
     after 40 ->
-	    {_, Results} = player:results(lasers),
-	    case lists:min(Results) < 1 of
+			{_, Results} = player:results(lasers),
+			case lists:min(Results) < 1 of
 				%no obstacle found -> keep moving
 				false ->
 					player:move(speed, Speed),
@@ -80,8 +80,8 @@ travel(Dispatcherid, Speed) ->
 							%I have lost the election
 							slave()
 					end
-				end
-  end.
+			end
+	end.
 
 %I am a master for this turn
 master(Dispatcherid, Speed) ->
