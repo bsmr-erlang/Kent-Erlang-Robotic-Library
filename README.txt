@@ -6,9 +6,13 @@ KERL is a library and driver to allow robot control using Player from Erlang fun
 PRE INSTALLATION
 ================
 
-KERL requires the following to function
+KERL requires the following to libraries function
 	- libplayerc
 	- ei
+
+
+This should simply mean installing Player and Erlang.
+You may have to build player from source to get the required header files.
 
 BUILDING
 ========
@@ -21,6 +25,7 @@ INSTALLATION
 
 Installation is not currently supported yet.
 Please refer to ./INSTALL.txt
+Also refer to INSTALL.* for guides on a particular distributon
 
 
 DOCUMENTATION
