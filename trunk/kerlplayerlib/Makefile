@@ -10,7 +10,7 @@ CFLAGS= -Wall -fPIC -shared
 
 K_INCLUDE= -I../include
 
-P_INCLUDE= -I /usr/local/share/player/include/player-2.1 -I /usr/include/player-2.1
+P_INCLUDE= -I /usr/local/share/player/include/player-2.1 -I /usr/include/player-2.1 -I /usr/local/include/player-2.1
 P_LIB= -L /usr/local/share/player/lib/ -L /usr/share/player/lib -lplayerc -lm -lplayerxdr -lplayererror
 
 EI_INCLUDE= -I/usr/lib/erlang/lib/erl_interface-3.5.7/include -I/usr/lib/erlang/lib/erl_interface-3.5.9/include
