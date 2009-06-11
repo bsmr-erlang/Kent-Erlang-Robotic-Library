@@ -35,7 +35,7 @@
 -import(driver, [call_port/4]).
 -export([start/0, loop/1, loop/2, call_port/2,info/1]).
 
-%% @doc Starts the driver and the multirobot server
+%% @doc Starts the driver and the multirobot server.
 %% @spec () -> RobotServer::pid() | {error, Error::atom()}
 start() ->
 	started(driver:start()).
@@ -57,6 +57,7 @@ init(Pid) ->
 
 
 %% Receive commands being made to be relayed to the driver
+%% @hidden
 loop(DriverPid) ->
 	?DBUG("call with driver id"),
 	receive
@@ -69,6 +70,7 @@ loop(DriverPid) ->
 
 
 %% This caches the robot id and the driver id connection
+%% @hidden
 loop(DriverPid, RobotId) ->
 	
 	receive
@@ -94,7 +96,8 @@ call_port(Pid, Message) ->
 
 	end.
 
-%% @doc Returns information about the robot
-%% @spec (RobotId::pid()) -> {RobotName, Host, Port, Index}
+%% @doc Returns information about the robot.
+%% @spec (RobotId::pid()) -> info()
+%% @type info() = {RobotName, Host, Port, Index}
 info(Rid) ->
     call_port(Rid, {info}).
