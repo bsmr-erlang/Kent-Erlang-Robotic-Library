@@ -133,7 +133,7 @@ FILE_PATTERNS          = *.c \
                          *.F90
 RECURSIVE              = YES
 EXCLUDE                = 
-EXCLUDE_SYMLINKS       = NO
+EXCLUDE_SYMLINKS       = YES
 EXCLUDE_PATTERNS       = */.svn/*
 EXCLUDE_SYMBOLS        = 
 EXAMPLE_PATH           = 
