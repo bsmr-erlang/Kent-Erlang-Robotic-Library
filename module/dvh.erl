@@ -107,11 +107,12 @@ pread_robots(Caller, Rid, Devices) ->
 	Caller ! {dvh, read_devices(Rid, Devices)}.
 
 
-%% A C-Style-Array value finder which returns the index of the value in the list
+%% @doc A C-Style-Array value finder which returns the index of the value in the list.
 %% returns the last occurence of the item, useful to find a minimum inside of the
 %% list of laser measurments.
 %% input: Value to find, List to search in.
 %% return: index if found (first element is 0), -1 if not found.
+%% spec (Value::integer(), List::list()) -> integer().
 find_value(Value, List)->
 	find_value(Value, List, 1, -1).
 find_value(Value, [Value|[]], Index, _)->

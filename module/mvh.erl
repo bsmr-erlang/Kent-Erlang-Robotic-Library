@@ -25,6 +25,9 @@
 %%% It provides moving the robot by speed or to a position.
 %%% It also allows the position of the robot to be read and
 %%% some other useful movement functions.
+%%% This functions are non-blocking so they will return before the robot has reached its destination.
+%%%
+
 
 -module(mvh).
 
@@ -36,6 +39,7 @@
 %% @doc Passes the command to the driver.
 %% @spec move(RobotId::pid(), Command::tuple()) -> Any
 %% @deprecated using {@link mrh:call_port/2} will produce same results 
+%% @hidden I want to avoid use of this function
 move(RobotId, Command) ->
 	call_port(RobotId, Command).
 
@@ -43,8 +47,19 @@ move(RobotId, Command) ->
 %% @doc Provides several ways of moving the robot.
 %% Supports: distance, speed, full, difference, position.
 %% It also supports a list of RobotIds.
-%% @spec (RobotId, Type::atom(), Params::tuple()) -> ok
-%% @type movemode() = distance | speed | full | difference | position
+%% @spec (RobotId::pid(), Mode::movemode(), Params::tuple()) -> ok
+%% @type movemode() = distance | speed | full | difference | position.
+%% <b>distance</b> 
+%% <p>Will move until it has moved a specified distance.</p>
+%% <b>speed</b>
+%% <p>Will constantly keep moving at a specified speed.</p>
+%% <b>full</b>
+%% <p>As well as moving at a specified speed, rotation speed can be specified.</p>
+%% <b>difference</b>
+%% <p></p>
+%% <b>position</b>
+%% <p>Travels toward a specified position.</p>
+
 move([], _, _) ->
 	[];
 move([RobotId|M], Type, Params) ->
@@ -71,7 +86,7 @@ move(RobotId, position, {X, Y, A}) ->
 
 
 %% @doc Stops a moving robot.
-%% @spec stop() -> ok
+%% @spec stop(RobotId::pid()) -> ok
 stop(RobotId) ->
     mvh:move(RobotId, speed, 0).
 
@@ -82,8 +97,12 @@ stop(RobotId) ->
 %% Rotating by speed will make the robot rotate at a fixed speed.
 %% It will keep rotating until it is stopped by using another movement function.
 %% rotate by amount of degrees
-%% @spec rotate(RobotID::pid(), rotationmode(), float()) -> ok | {error, atom}
-%% @type rotationmode() = degrees | speed
+%% @spec rotate(RobotID::pid(), Mode::rotationmode(), float()) -> ok | {error, Reason::atom()}
+%% @type rotationmode() = degrees | speed.
+%% <b>degrees</b> 
+%% <p>This tells the robot to rotate until it has reached the number of degrees specified.</p>
+%% <b>speed</b>
+%% <p>This tells the robot to constantly rotate at a specified speed.</p>
 rotate(RobotId, degrees, Degrees) ->
 	call_port(RobotId, {rotate, degrees, Degrees});
 %% rotate at speed
@@ -94,7 +113,7 @@ rotate(RobotId, speed, Speed) ->
 %% @doc Reads the robot odometer.
 %% The inital odometer is set to {0,0,0} and will track the position of the 
 %% robot from its starting position.
-%% @spec get_position(RobotID::pid()) -> {X::float(), Y::float(), Radians::float()} | {error, atom()}
+%% @spec get_position(RobotID::pid()) -> {X::float(), Y::float(), Radians::float()} | {error, Reason::atom()}
 get_position(RobotId) ->
     call_port(RobotId, {get_position}).
 
