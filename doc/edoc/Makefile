@@ -2,7 +2,7 @@ all:
 	$(MAKE) edoc
 
 clean:
-	rm -f [^MD]*
+	rm -f *.html *.png *.css edoc-info
 
 edoc:
 	cp ../../module/*.erl .
