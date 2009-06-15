@@ -7,7 +7,7 @@
 
 -module(wallfollow).
 
--export([start/0, travel/1, collision/2]).
+-export([start/0, travel/1, collision/3]).
 
 % runs simple wall avoider with a single robot
 start() ->
@@ -19,7 +19,7 @@ init({error, Error}) ->
 
 % Spawns the collision and movement processes
 init(Rid) ->
-    spawn(?MODULE, collision, [Pid = spawn(?MODULE, travel, [Rid]), Rid]),
+    spawn(?MODULE, collision, [Pid = spawn(?MODULE, travel, [Rid]), Rid, stop]),
     Pid.
 
 % Controls the robots movements
@@ -34,14 +34,18 @@ travel(Rid) ->
 
 
 % Reads the lasers and checks for collisions
-collision(Pid, Rid) ->
+collision(Pid, Rid, State) ->
     {_, Results} = dvh:results(Rid, lasers),
-    is_collision(Pid, lists:min(lists:sublist(Results, 90, 180))),
+    NewState = is_collision(Pid, lists:min(lists:sublist(Results, 90, 180)), State),
     timer:sleep(50),
-    collision(Pid, Rid).
+    collision(Pid, Rid, NewState).
 
 % A simple collision detector using the smallest laser result
-is_collision(Pid, Min) when Min < 1 ->
-    Pid ! {collision, true};
-is_collision(Pid, _) ->
-    Pid ! {collision, false}.
+is_collision(Pid, Min, move) when Min < 1 ->
+    Pid ! {collision, true},
+	stop;
+is_collision(Pid, _, stop) ->
+    Pid ! {collision, false},
+	move;
+is_collision(_,_,State) ->
+	State.
