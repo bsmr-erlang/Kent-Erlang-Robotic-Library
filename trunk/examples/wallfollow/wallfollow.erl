@@ -1,13 +1,13 @@
 %%% File    : wallfollow.erl
 %%% Author  :  Thomas Lorentsen, Sten Gruener
-%%% Description : Moves around avoiding walls
+%%% Description : Moves around avoiding walls.
 %%%               This moves a robot around a map avoiding walls,
 %%%               Make this work better.
 %%% Created : 14 Apr 2009 by Thomas Lorentsen
 
 -module(wallfollow).
 
--export([start/0, travel/1, collision/3]).
+-export([start/0, travel/1, collision/2]).
 
 % runs simple wall avoider with a single robot
 start() ->
@@ -19,7 +19,7 @@ init({error, Error}) ->
 
 % Spawns the collision and movement processes
 init(Rid) ->
-    spawn(?MODULE, collision, [Pid = spawn(?MODULE, travel, [Rid]), Rid, stop]),
+    spawn(?MODULE, collision, [Pid = spawn(?MODULE, travel, [Rid]), Rid]),
     Pid.
 
 % Controls the robots movements
@@ -34,18 +34,14 @@ travel(Rid) ->
 
 
 % Reads the lasers and checks for collisions
-collision(Pid, Rid, State) ->
+collision(Pid, Rid) ->
     {_, Results} = dvh:results(Rid, lasers),
-    NewState = is_collision(Pid, lists:min(lists:sublist(Results, 90, 180)), State),
+    is_collision(Pid, lists:min(lists:sublist(Results, 90, 180))),
     timer:sleep(50),
-    collision(Pid, Rid, NewState).
+    collision(Pid, Rid).
 
 % A simple collision detector using the smallest laser result
-is_collision(Pid, Min, move) when Min < 1 ->
-    Pid ! {collision, true},
-	stop;
-is_collision(Pid, _, stop) ->
-    Pid ! {collision, false},
-	move;
-is_collision(_,_,State) ->
-	State.
+is_collision(Pid, Min) when Min < 1 ->
+    Pid ! {collision, true};
+is_collision(Pid, _) ->
+    Pid ! {collision, false}.
