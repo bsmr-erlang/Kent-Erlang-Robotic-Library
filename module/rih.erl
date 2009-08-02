@@ -144,11 +144,14 @@ destroy(Robotid) ->
 %% @doc initiates a list of robots in parallel.
 %% Returns a list of robots.
 %% @spec plinit(DriverID::pid(), Robots::list(), Config::list()) -> RobotID::pid()
-plinit(Pid, Robots, AutoConf) ->
+plinit(Pid, Robots, AutoConf) when is_list(AutoConf)->
 	% will spawn a initiator for each robot
 	[ spawn(rih,plinit,[self(), Pid, [Robot], AutoConf]) || Robot <- Robots],
 	% will iterate by number of robots
-	[ reply() || _ <- Robots].
+	[ reply() || _ <- Robots];
+% Catch obvious config mistake which could cause an infinite loop
+plinit(_, _, _) ->
+    {error, bad_config}.
 
 %% This returns a reply from this module
 reply() ->
