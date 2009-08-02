@@ -44,6 +44,8 @@ init(Pid, Id) ->
 %% @doc Initiates a robot by its hostname, port number and index number.
 %% The Robot ID is returned on successful initialisation.
 %% @spec init(DriverID::pid(), Hostname::string(), Port::integer(), Index::integer()) -> RobotID::pid()
+init(Pid, Host, Port, Id) when is_atom(Host) ->
+    init(Pid, atom_to_list(Host), Port, Id);
 init(Pid, Host, Port, Id) ->
 	init(Pid, Host, Port, Id, genNickname(Host, Port, Id)).
 	
