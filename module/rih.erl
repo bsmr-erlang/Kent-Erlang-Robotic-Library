@@ -126,6 +126,9 @@ autoconfig(Pid, [{port,Port}|M], {Host, _, Id}) ->
 % id config
 autoconfig(Pid, [{id,Id}|M], {Host, Port, _}) ->
     autoconfig(Pid, M,{Host, Port, Id});
+% id config
+autoconfig(Pid, [_|M], Tuple) ->
+    autoconfig(Pid, M,Tuple);
 % Passed {Host}
 autoconfig(Pid, AutoConf, {Host}) ->
     autoconfig(Pid, AutoConf, {Host, 6665, 0});
