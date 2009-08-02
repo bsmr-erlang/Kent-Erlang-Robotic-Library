@@ -167,7 +167,7 @@ plinit(Caller, Pid, [Conf|Robots], AutoConf) when is_list(AutoConf) ->
 	spawn(rih,plinit,[Caller, Pid, Robots, AutoConf]),
 	Caller ! {rih, linit(Pid, [Conf], AutoConf)};
 plinit(Caller, _, _, _) ->
-    Caller ! {error, bad_config}.
+    Caller ! {rih, [{error, bad_config}]}.
 
 
 
