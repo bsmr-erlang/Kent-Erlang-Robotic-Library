@@ -98,10 +98,10 @@ call_port(Pid, Message) ->
 
 %% @doc Returns information about the robot.
 %% @spec (RobotId::pid()|RobotIds::list()) -> info()
-%% @type info() = {RobotName, Host, Port, Index}
+%% @type info() = {Rid:pid(),{RobotName, Host, Port, Index}} | Rids:list()
 info([]) ->
     [];
 info([Rid|M]) ->
     [info(Rid)]++info(M);
 info(Rid) ->
-    call_port(Rid, {info}).
+    {Rid, call_port(Rid, {info})}.
