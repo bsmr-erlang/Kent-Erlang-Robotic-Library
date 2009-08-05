@@ -27,6 +27,15 @@ Installation is not currently supported yet.
 Please refer to ./INSTALL.txt
 Also refer to INSTALL.* for guides on a particular distributon
 
+You can run as root
+
+$ make install
+
+to install kerl to 
+
+/usr/lib/erlang/lib/kerl/
+
+
 
 DOCUMENTATION
 =============
