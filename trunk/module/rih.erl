@@ -183,7 +183,7 @@ plinit(Caller, _, _, _) ->
 
 %% @doc Initiates a robot from the tuple passed.
 %% This function should strictly be for internal functions and is required for initialisation to work.
-%% @spec init({Driver::pid(), Host::string(), Port::integer(), Id::integer()}) -> RobotID::pid()
+%% @spec init_tuple({Driver::pid(), Host::string(), Port::integer(), Id::integer()}) -> RobotID::pid()
 init_tuple({Pid, Host, Port, Id}) ->
 	init(Pid, Host, Port, Id).
 
