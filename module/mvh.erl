@@ -96,13 +96,18 @@ stop(RobotId) ->
 %% It keep rotating until it has reached the direction it needs.
 %% Rotating by speed will make the robot rotate at a fixed speed.
 %% It will keep rotating until it is stopped by using another movement function.
-%% rotate by amount of degrees
+%% This function can also take a list of robots.
 %% @spec rotate(RobotID::pid(), Mode::rotationmode(), float()) -> ok | {error, Reason::atom()}
 %% @type rotationmode() = degrees | speed.
 %% <b>degrees</b> 
 %% <p>This tells the robot to rotate until it has reached the number of degrees specified.</p>
 %% <b>speed</b>
 %% <p>This tells the robot to constantly rotate at a specified speed.</p>
+
+rotate([], _, _) ->
+	[];
+rotate([RobotId|M], Type, Params) ->
+	[rotate(RobotId, Type, Params)]++rotate(M, Type, Params);
 rotate(RobotId, degrees, Degrees) ->
 	call_port(RobotId, {rotate, degrees, Degrees});
 %% rotate at speed
