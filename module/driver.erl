@@ -114,15 +114,14 @@ init(Pid, SharedLib) ->
 %% All messages to be passed to port must be in a tuple beginning with call atom.
 %% Messages from the port driver begin with port process id in the atom and the caller
 loop(Port) ->
-    receive												% create a new robot and update the robot id
+    receive												
+												% create a new robot and update the robot id
 		{call, Caller, {create, Host, Port, ID, RobotId}} ->
-			
 			?DBUG("creating new robot"),
 			Port ! encode_port_message(self(), RobotId, Caller, {create, Host, Port, ID, RobotId}),
 			loop(Port);
 		
 												% all other messages to the robot
-		
 		{call, Caller, RobotId, Message} ->
 			?DBUG("calling robot with this message"),
 			?DBUG(Message),
@@ -191,7 +190,6 @@ integer_to_float(Input) when is_tuple(Input) ->
 
 %% Converts a single integer to a float
 integer_to_float(Input) when erlang:is_integer(Input) ->
-	%convert to float
 	Input*1.0;
 
 %% This is the case when the input is neither a tuple, nor a integer -> return the input

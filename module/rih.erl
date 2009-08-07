@@ -33,7 +33,10 @@
 -export([init/2,init/4,init/5,linit/2,linit/3,destroy/1]).
 -export([plinit/3,plinit/4]).
 
+
 -import(mrh, [call_port/2]).
+
+
 
 %% @doc Initiates a robot by its player index number.
 %% The Robot ID is returned on successful initialisation.
@@ -83,6 +86,7 @@ genNickname(Host, Port, Id) ->
 
 
 %% @doc Initalise a list of robots.
+%% Due to function being synchronous it will take longer to initialise multiple robots.
 %% Each item can consist of either an index number of a tuples of any of the following:
 %% {Index} 
 %% {Hostname, Port, Index} 
@@ -100,7 +104,7 @@ linit(_, [], _) ->
     [];
 % auto configs and then inits
 linit(Pid, [Conf|Robots], AutoConf) ->
-    [autoconfig(Pid, AutoConf, Conf)]++linit(Pid, Robots, AutoConf).
+    [init_tuple(autoconfig(Pid, AutoConf, Conf))]++linit(Pid, Robots, AutoConf).
 
 %% Reads a robot config
 deconfig(Pid, {Id}) ->
@@ -116,7 +120,7 @@ deconfig(Pid, Id) ->
 % it starts with defaults and replaces values
 % inits robot with these new settings when all settings have been applied
 autoconfig(Pid, [], {Host, Port, Id}) ->
-    init(Pid, Host, Port, Id);
+    {Pid, Host, Port, Id};
 % Host config
 autoconfig(Pid, [{host,Host}|M], {_, Port, Id}) ->
     autoconfig(Pid, M,{Host, Port, Id});
@@ -126,9 +130,9 @@ autoconfig(Pid, [{port,Port}|M], {Host, _, Id}) ->
 % id config
 autoconfig(Pid, [{id,Id}|M], {Host, Port, _}) ->
     autoconfig(Pid, M,{Host, Port, Id});
-% id config
-autoconfig(Pid, [_|M], Tuple) ->
-    autoconfig(Pid, M,Tuple);
+% unknown
+autoconfig(Pid, [_|M], {Host, Port, Id}) ->
+    autoconfig(Pid, M,{Host, Port, Id});
 % Passed {Host}
 autoconfig(Pid, AutoConf, {Host}) ->
     autoconfig(Pid, AutoConf, {Host, 6665, 0});
@@ -147,7 +151,7 @@ destroy(Robotid) ->
 %% @doc initiates a list of robots in parallel.
 %% Returns a list of robots.
 %% @spec plinit(DriverID::pid(), Robots::list(), Config::list()) -> RobotID::pid()
-plinit(Pid, Robots, AutoConf) when is_list(AutoConf)->
+plinit(Pid, Robots, AutoConf) when is_list(AutoConf) ->
 	% will spawn a initiator for each robot
 	[ spawn(rih,plinit,[self(), Pid, [Robot], AutoConf]) || Robot <- Robots],
 	% will iterate by number of robots
@@ -175,6 +179,13 @@ plinit(Caller, Pid, [Conf|Robots], AutoConf) when is_list(AutoConf) ->
 plinit(Caller, _, _, _) ->
     Caller ! {rih, [{error, bad_config}]}.
 
+
+
+%% @doc Initiates a robot from the tuple passed.
+%% This function should strictly be for internal functions and is required for initialisation to work.
+%% @spec init({Driver::pid(), Host::string(), Port::integer(), Id::integer()}) -> RobotID::pid()
+init_tuple({Pid, Host, Port, Id}) ->
+	init(Pid, Host, Port, Id).
 
 
 %% This generates fixed length hex string that can be used as a id
