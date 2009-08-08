@@ -1,0 +1,574 @@
+# erlang09
+# Author - position2d
+
+include "pioneer.inc"
+include "map.inc"
+include "sick.inc"
+
+interval_sim 100
+interval_real 1
+
+paused 0
+
+window
+(
+ size [ 700.000 700.000 ]
+ scale 12.418
+ show_data 1
+)
+
+
+
+pioneer2dx
+(
+ name "r1"
+
+ pose [ -21.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r2"
+
+ pose [ -19.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r3"
+
+ pose [ -17.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r4"
+
+ pose [ -13.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r5"
+
+ pose [ -11.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r6"
+
+ pose [ -5.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r7"
+
+ pose [ 5.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r8"
+
+ pose [ 11.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r9"
+
+ pose [ 15.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r10"
+
+ pose [ 19.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r11"
+
+ pose [ 21.000 10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r12"
+
+ pose [ 23.000 10.000 0 0 ]
+ sicklaser()
+)
+# END OF FIRST ROW
+pioneer2dx
+(
+ name "r13"
+
+ pose [ -21.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r14"
+
+ pose [ -13.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r15"
+
+ pose [ -9.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r16"
+
+ pose [ -5.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r17"
+
+ pose [ 3.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r18"
+
+ pose [ 7.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r19"
+
+ pose [ 11.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r20"
+
+ pose [ 12.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r21"
+
+ pose [ 15.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r22"
+
+ pose [ 19.000 8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r23"
+
+ pose [ 23.000 8.000 0 0 ]
+ sicklaser()
+)
+# End of row 2
+pioneer2dx
+(
+ name "r24"
+
+ pose [ -21.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r25"
+
+ pose [ -19.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r26"
+
+ pose [ -13.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r27"
+
+ pose [ -11.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r28"
+
+ pose [ -5.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r29"
+
+ pose [ 3.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r30"
+
+ pose [ 5.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r31"
+
+ pose [ 7.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r32"
+
+ pose [ 11.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r33"
+
+ pose [ 13.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r34"
+
+ pose [ 15.000 6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r35"
+
+ pose [ 19.000 6.000 0 0 ]
+ sicklaser()
+)
+# End of 3rd row
+pioneer2dx
+(
+ name "r36"
+
+ pose [ -21.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r37"
+
+ pose [ -13.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r38"
+
+ pose [ -11.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r39"
+
+ pose [ -5.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r40"
+
+ pose [ 3.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r41"
+
+ pose [ 7.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r42"
+
+ pose [ 11.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r43"
+
+ pose [ 14.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r44"
+
+ pose [ 15.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r45"
+
+ pose [ 19.000 4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r46"
+
+ pose [ 22.000 5.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r47"
+
+ pose [ 23.000 4.000 0 0 ]
+ sicklaser()
+)
+# end of 4th row
+pioneer2dx
+(
+ name "r48"
+
+ pose [ -21.000 2.000 0 0 ]
+ sicklaser()
+)
+
+pioneer2dx
+(
+ name "r49"
+
+ pose [ -19.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r50"
+
+ pose [ -17.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r51"
+
+ pose [ -13.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r52"
+
+ pose [ -9.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r53"
+
+ pose [ -5.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r54"
+
+ pose [ -3.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r55"
+
+ pose [ -1.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r56"
+
+ pose [ 3.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r57"
+
+ pose [ 7.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r58"
+
+ pose [ 11.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r59"
+
+ pose [ 15.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r60"
+
+ pose [ 19.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r61"
+
+ pose [ 21.000 2.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r62"
+
+ pose [ 23.000 2.000 0 0 ]
+ sicklaser()
+)
+#End of 5th row
+
+pioneer2dx
+(
+ name "r63"
+
+ pose [ -3.000 -2.000 0 0 ]
+ sicklaser()
+)
+
+pioneer2dx
+(
+ name "r64"
+
+ pose [ 5.000 -2.000 0 0 ]
+ sicklaser()
+)
+#end 6th row
+
+pioneer2dx
+(
+ name "r65"
+
+ pose [ -5.000 -4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r65"
+
+ pose [ -1.000 -4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r66"
+
+ pose [ 3.000 -4.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r67"
+
+ pose [ 7.000 -4.000 0 0 ]
+ sicklaser()
+)
+#end 7th row
+pioneer2dx
+(
+ name "r68"
+
+ pose [ -5.000 -6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r69"
+
+ pose [ -1.000 -6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r70"
+
+ pose [ 3.000 -6.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r71"
+
+ pose [ 7.000 -6.000 0 0 ]
+ sicklaser()
+)
+#end 8th row
+pioneer2dx
+(
+ name "r72"
+
+ pose [ -5.000 -8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r73"
+
+ pose [ -1.000 -8.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r74"
+
+ pose [ 5.000 -8.000 0 0 ]
+ sicklaser()
+)
+#end of 9th row
+pioneer2dx
+(
+ name "r75"
+
+ pose [ -3.000 -10.000 0 0 ]
+ sicklaser()
+)
+pioneer2dx
+(
+ name "r76"
+
+ pose [ 3.000 -10.000 0 0 ]
+ sicklaser()
+)
+#end of 10th row
