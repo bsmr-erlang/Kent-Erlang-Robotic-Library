@@ -2,6 +2,7 @@
 ## first draft player-stage world generator script
 ## accelerator for multiple robot configs...
 ## Author - Matthew Champ
+## Example - /world.sh StenGruener filename 55 position2d laser speech
 if [ -z $1 ]; then
 	echo "Usage: Provide your name, the name you want your configs to have and the number of robots. All further parameters will then be used as device names!"
 	exit
