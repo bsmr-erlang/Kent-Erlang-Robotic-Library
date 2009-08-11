@@ -56,12 +56,31 @@ results_to_triangle([Laser|Lasers], Degrees, Inc) ->
 
 
 %% @doc convert degrees to radians.
-%% @spec deg2rad(Degrees::float()) -> Radians::float()
+%% @spec deg2rad(degree()|degrees()|degree_results()) -> radian() | radians() | radian_results()
+%% @type degree() = float()
+%% @type degrees() = list()
+%% @type degree_results() = {degrees(), Results::list()}
+deg2rad({Bearings, Results}) ->
+	{deg2rad(Bearings), Results};
+deg2rad([]) -> [];
+deg2rad([Deg|L]) ->
+	[deg2rad(Deg)] ++ deg2rad(L);
 deg2rad(Deg) ->
 	Deg * pi()/180.
 
 
 %% @doc convert radians to degrees.
-%% @spec rad2deg(Radians::float()) -> Degrees::float()
+%% If a list of radians is given than a list of degrees is returned.
+%% @spec rad2deg(radian()| radians() | radian_results()) -> degree() | degrees() | degree_results()
+%% @type radian() = float()
+%% @type radians() = list()
+%% @type radian_results() = {radians(), Results::list()}
+rad2deg({Bearings, Results}) ->
+	{rad2deg(Bearings), Results};
+rad2deg([]) -> [];
+rad2deg([Rad| L]) ->
+	[rad2deg(Rad)]++rad2deg(L);
 rad2deg(Rad) ->
 	Rad * 180 / pi().
+
+
