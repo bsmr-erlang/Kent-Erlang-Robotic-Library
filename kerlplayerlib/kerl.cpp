@@ -324,9 +324,11 @@ void kerlResults(KerlData *state){
 		//result size
 		int size = 0;
 		
+		int i; // for loops
 
 		// memory to fill with fiducial data
 		int *fid_id;
+		double **fid_pos, **fid_upos;
 
 		// get the number of results and return on error
 		if ((res = fiducialResultsSize(state->robotID, &size))!=SUCCESS) {
@@ -334,22 +336,44 @@ void kerlResults(KerlData *state){
 			returnErrorMessage(state, errorToString(res));
 			return;
 		}
-		DBUG("There are %d beacons found\n\r");
+		DBUG("There are %d beacons found\n\r", size);
 
 
 		//Allocate memory if there are beacons found
+		
 		if (size>0) {
 			DBUG("Allocating memory\n\r");
 			fid_id=(int*) driver_alloc(sizeof(int)*size);
+			fid_pos=(double**) driver_alloc(sizeof(double)*size);
+			fid_upos=(double**) driver_alloc(sizeof(double)*size);
+
+			
+			for(i = 0; i < size;i++) {
+				fid_pos[i]=(double*) driver_alloc(sizeof(double)*6);
+				fid_upos[i]=(double*) driver_alloc(sizeof(double)*6);
+
+			}
+			
+			
 		}
 		DBUG("Reading results \n\r");
 
-		res=readFiducialResults(state->robotID, fid_id, &size);
+		res=readFiducialResults(state->robotID, fid_id, fid_pos, fid_upos, &size);
 		//success?
 		if(res!=SUCCESS){
 			DBUG("Nothing read (memory init: %d )\n\r", (fid_id==NULL));
 			// deallocate arrays if they have been created
+			for(i = 0; i < size;i++) {
+				if (!fid_pos && !fid_pos[i]) driver_free(fid_pos[i]);
+
+				if (!fid_upos && !fid_upos[i]) driver_free(fid_upos[i]);
+	
+			}
 			if (!fid_id) driver_free(fid_id);
+			if (!fid_pos) driver_free(fid_pos);
+
+			if (!fid_upos) driver_free(fid_upos);
+
 			DBUG("return error message\n\r");
 			returnErrorMessage(state, errorToString(res));
 			return;
@@ -359,7 +383,7 @@ void kerlResults(KerlData *state){
 		// See comments in laser reading for more help
 		// [{id},{id}]
 
-		int spec_len = (size*2) + 9;
+		int spec_len = ((size*2)*18) + 11;
 
 
 		// Allocate space for the spec
@@ -368,12 +392,36 @@ void kerlResults(KerlData *state){
 		ptr=0;
 		pushOntoStack(spec, &ptr, ERL_DRV_PORT, driver_mk_port(state->port));
 		pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom(state->pid));
-
+		// This is what this tuple will contain (used by driver.erl to do the downscaling)
+		pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("fiducials"));
+	
 		//TODO Clean following list creating up
-		int i;
+		DBUG("inserting fiducial items \n\r");
 		for (i = 0; i!=size; i++) {
 			
 			pushOntoStack(spec, &ptr, ERL_DRV_INT, fid_id[i]);
+			// position
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_pos[i][0]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_pos[i][1]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_pos[i][2]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 3);
+			// rotation
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_pos[i][3]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_pos[i][4]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_pos[i][5]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 3);
+			// uposition
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_upos[i][0]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_upos[i][1]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_upos[i][2]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 3);
+			// urotation
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_upos[i][3]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_upos[i][4]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, (int)(fid_upos[i][5]*1000000));
+			pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 3);
+			// end of fiducial item
+			pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 5);
 		}
 
 		// End the list
@@ -383,11 +431,21 @@ void kerlResults(KerlData *state){
 
 
 		// End the tuple
-		pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 3);
+		pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 4);
 
 
 		// free memory if needed
+		for(i = 0; i < size;i++) {
+				if (!fid_pos && !fid_pos[i]) driver_free(fid_pos[i]);
+	
+				if (!fid_upos && !fid_upos[i]) driver_free(fid_upos[i]);
+	
+			}
 		if (!fid_id) driver_free(fid_id);
+		if (!fid_pos) driver_free(fid_pos);
+
+		if (!fid_upos) driver_free(fid_upos);
+
 
 		driver_output_term(state->port, spec, spec_len);
 		freeMemory(state);
