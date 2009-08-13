@@ -53,6 +53,10 @@ typedef struct {
 	playerc_position2d_t* position2d;
 	/*! Player laser data */
 	playerc_laser_t* laser;
+#ifdef KERLFIDUCUAL
+	/*! Player fiducial data */
+	playerc_fiducial_t* fiducial;
+#endif
 } PlayerClient;
 
 /**
