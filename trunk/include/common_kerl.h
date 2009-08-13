@@ -176,10 +176,15 @@ typedef struct {
  * Supported device: Sonar range finder
  */
 #define SUPSONAR 0x4
-//add to this list must be in power of twos
-//for example, gps might be 0x8 and then camera might be 0x16
-//This allows device to be represented as a binary on or off
+/**
+ * \def SUPFIDUCIAL 
+ * Supported device: Fiducial sensors
+ */
+#define SUPFIDUCIAL 0x8
 
+//add to this list must be in power of twos
+//for example, gps might be 0x16 and then camera might be 0x32
+//This allows device to be represented as a binary on or off
 
 /**
  * \fn errorToString(int)

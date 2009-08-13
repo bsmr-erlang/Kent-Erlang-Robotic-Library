@@ -389,7 +389,10 @@ int queryRobot(char* robotID, ClientQuery* query) {
 		query->devices = query->devices | SUPPOSITION;
 	if (client->laser)
 		query->devices = query->devices | SUPLASERS;
-		
+#ifdef KERLFIDUCUAL
+	if (client->fiducial)
+		query->devices = query->devices | SUPFIDUCIAL;
+#endif
 	return SUCCESS;
 }
 
