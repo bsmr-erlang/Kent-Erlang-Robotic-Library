@@ -7,6 +7,8 @@ CFLAGS= -Wall -fPIC -shared
 ## DEFINITIONS
 # DEBUG switch on debugging
 #CFLAGS+= -DDEBUG
+# Add device support
+CFLAGS+= -DKERLFIDUCUAL
 
 K_INCLUDE= -I../include
 

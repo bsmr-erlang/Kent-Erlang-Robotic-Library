@@ -136,6 +136,16 @@ int createRobot(char* address, int port, int index, char* robotID) {
 				DBUG(" ainit pos: %p ", client->position2d);
 			}
 			break;
+#ifdef KERLFIDUCUAL
+		case PLAYER_FIDUCIAL_CODE:
+			if (client->client->devinfos[i].addr.index == index) {
+				DBUG(" AUTOINIT Found device: fiducial sensor at %d \r\n", client->client->devinfos[i].addr.index);
+			
+				client->fiducial = playerc_fiducial_create(client->client, client->index);
+				if(playerc_fiducial_subscribe(client->fiducial, PLAYER_OPEN_MODE)) return DEVICENOTINITIALISED;
+			}
+			break;
+#endif
 		default:
 			if (client->client->devinfos[i].addr.index == index) {
 				DBUG(" AUTOINIT Found device: unknown at %d \r\n", client->client->devinfos[i].addr.index);
