@@ -56,6 +56,7 @@ results_to_triangle([Laser|Lasers], Degrees, Inc) ->
 
 
 %% @doc convert degrees to radians.
+%% If a list of degrees is given than a list of radians is returned.
 %% @spec deg2rad(degree()|degrees()|degree_results()) -> radian() | radians() | radian_results()
 %% @type degree() = float()
 %% @type degrees() = list()
