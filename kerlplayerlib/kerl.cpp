@@ -380,6 +380,8 @@ void query(KerlData *state) {
 			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("lasers"));
 		if (query->devices & SUPSONAR) 
 			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("sonar"));
+		if (query->devices & SUPFIDUCIAL) 
+			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("fiducial"));
 		
 		
 		pushOntoStack(spec, &ptr, ERL_DRV_NIL);
