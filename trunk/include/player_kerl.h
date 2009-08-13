@@ -173,10 +173,13 @@ int fiducialResultsSize(char* robotID, int *numberOfResults);
  * \fn readFiducialResults(char* robotID, int *id,  int *size)
  * \param robotID an identification for the robot
  * \param id beacon id
+ * \param position beacon position (x,y,z,r,p,y)
+ * \param uposition uncertainty position
  * \param size the number of results
- * Grabs detected devices
+ * Grabs a list of beacons that the sensor can see. 
  */
-int readFiducialResults(char* robotID, int *id,  int *size);
+int readFiducialResults(char* robotID, int *id,  
+						double **position, double **uposition, int *size);
 
 #endif
 /**

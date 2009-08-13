@@ -349,14 +349,20 @@ int fiducialResultsSize(char* robotID, int *numberOfResults) {
 	return SUCCESS;
 }
 
+
 /**
  * \fn readFiducialResults(char* robotID, int *id,  int *size)
  * \param robotID an identification for the robot
  * \param id beacon id
+ * \param position beacon position (x,y,z)
+ * \param rotation beacon orientation (r,p,y)
+ * \param upos uncertainty position
+ * \param urot uncertainty orientation
  * \param size the number of results
- * Grabs detected devices
+ * Grabs a list of beacons that the sensor can see. 
  */
-int readFiducialResults(char* robotID, int *id,  int *size) {
+int readFiducialResults(char* robotID, int *id,  
+						double **position, double **uposition, int *size) {
 	PlayerClient *client;
 	int i;
 	player_fiducial_item *item;
@@ -365,6 +371,18 @@ int readFiducialResults(char* robotID, int *id,  int *size) {
 	for(i = 0; i < *size;i++) {
 		item = &client->fiducial->fiducials[i];
 		id[i]= item->id;
+		position[i][0] = item->pose.px;
+		position[i][1] = item->pose.py;
+		position[i][2] = item->pose.pz;
+		position[i][3] = item->pose.proll;
+		position[i][4] = item->pose.ppitch;
+		position[i][5] = item->pose.pyaw;
+		uposition[i][0] = item->upose.px;
+		uposition[i][1] = item->upose.py;
+		uposition[i][2] = item->upose.pz;
+		uposition[i][3] = item->upose.proll;
+		uposition[i][4] = item->upose.ppitch;
+		uposition[i][5] = item->upose.pyaw;
 	}
 	return SUCCESS;
 }

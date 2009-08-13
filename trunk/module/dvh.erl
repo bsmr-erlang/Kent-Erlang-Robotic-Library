@@ -44,8 +44,10 @@ results(Rid, Device) ->
 
 %% @doc Read device of a robot.
 %% Pass in the robot pid and an atom of the device name
-%% Devices supported: lasers
+%% Devices supported: lasers, fiducial
 %% @spec (RobotId::pid(), Device::atom()) -> Results::tuple() | {error, no_such_device}
+read(Rid, fiducial) ->
+	read_fiducial(Rid);
 read(Rid, lasers) ->
 	read_lasers(Rid);
 % Return a error without calling the driver
@@ -58,7 +60,11 @@ read(_,_) ->
 read_lasers(Rid) ->
 	call_port(Rid, {results, lasers}).
 
-
+%% @doc Reads the fiducial sensors and returns a list of tuples.
+%% tuples are of the form of: <br />
+%% {Id, {Roll, Pitch, Yaw},{UX,UY,UZ},{URoll, UPitch, UYaw}}
+%% Id is 0 when the id of a item is unknown
+%% @spec (RobotId::pid()) -> Fiducials::list() | {error, no_such_device}
 read_fiducial(Rid) ->
 	call_port(Rid, {results, fiducial}).
 

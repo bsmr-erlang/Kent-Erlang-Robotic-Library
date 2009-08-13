@@ -134,6 +134,9 @@ loop(Port) ->
 		{Port, OriginalCaller, list_float, ListA, list_float, ListB} ->
 			list_to_pid(atom_to_list(OriginalCaller)) ! {return, list_decode({ListA, ListB})},
 			loop(Port);
+		{Port, OriginalCaller, fiducials, Return} ->
+			list_to_pid(atom_to_list(OriginalCaller)) ! {return, fid_decode(Return)},
+			loop(Port);
 		{Port, OriginalCaller, Return} ->
 			list_to_pid(atom_to_list(OriginalCaller)) ! {return, Return},
 			loop(Port);
@@ -150,6 +153,17 @@ loop(Port) ->
 encode_port_message(Pid, Rid, Caller, Message) ->
 	{Pid, {command, term_to_binary({Rid, pid_to_list(Caller), Message})}}.
 
+
+%% fiducial tuples need to be converted back to doubles
+fid_decode([]) ->
+	[];
+% [{Id, {Roll, Pitch, Yaw},{UX,UY,UZ},{URoll, UPitch, UYaw}} | _]
+fid_decode([{Id, Position,Rotation, UPosition, URotation}|More]) ->
+	[{Id, 
+	  tuple_decode(Position),
+	  tuple_decode(Rotation),
+	  tuple_decode(UPosition),
+	  tuple_decode(URotation)}]++fid_decode(More).
 
 %% pass in a tuple and it will upscale the values
 tuple_decode({X,Y,Z}) ->
