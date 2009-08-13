@@ -242,7 +242,7 @@ void kerlUpdate(KerlData *state){
  */
 void kerlResults(KerlData *state){
 	int res;
-
+	int ptr;
 	// Grab the next atom and put it in the struct
 	ei_decode_atom(state->buff, &state->termIndex, state->fn);
 
@@ -251,7 +251,7 @@ void kerlResults(KerlData *state){
 		//only lasers implemented yet
 		double *angles;
 		double *results;
-		int ptr;
+		
 		
 		int size = 0;
 
@@ -318,7 +318,81 @@ void kerlResults(KerlData *state){
 		driver_output_term(state->port, spec, spec_len);
 		freeMemory(state);
 		DBUG("Allocated: %i Used : %i\n", spec_len, ptr);
+#ifdef KERLFIDUCUAL
+	} else if (!strncmp(state->fn, "fiducial", 8)) {
+		DBUG("Fiducial device reader\n\r");
+		//result size
+		int size = 0;
 		
+
+		// memory to fill with fiducial data
+		int *fid_id;
+
+		// get the number of results and return on error
+		if ((res = fiducialResultsSize(state->robotID, &size))!=SUCCESS) {
+			DBUG("return error message\n\r");
+			returnErrorMessage(state, errorToString(res));
+			return;
+		}
+		DBUG("There are %d beacons found\n\r");
+
+
+		//Allocate memory if there are beacons found
+		if (size>0) {
+			DBUG("Allocating memory\n\r");
+			fid_id=(int*) driver_alloc(sizeof(int)*size);
+		}
+		DBUG("Reading results \n\r");
+
+		res=readFiducialResults(state->robotID, fid_id, &size);
+		//success?
+		if(res!=SUCCESS){
+			DBUG("Nothing read (memory init: %d )\n\r", (fid_id==NULL));
+			// deallocate arrays if they have been created
+			if (!fid_id) driver_free(fid_id);
+			DBUG("return error message\n\r");
+			returnErrorMessage(state, errorToString(res));
+			return;
+		}
+
+		DBUG("Building erlang data to return \n\r");
+		// See comments in laser reading for more help
+		// [{id},{id}]
+
+		int spec_len = (size*2) + 9;
+
+
+		// Allocate space for the spec
+		ErlDrvTermData spec[spec_len];
+
+		ptr=0;
+		pushOntoStack(spec, &ptr, ERL_DRV_PORT, driver_mk_port(state->port));
+		pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom(state->pid));
+
+		//TODO Clean following list creating up
+		int i;
+		for (i = 0; i!=size; i++) {
+			
+			pushOntoStack(spec, &ptr, ERL_DRV_INT, fid_id[i]);
+		}
+
+		// End the list
+		pushOntoStack(spec, &ptr, ERL_DRV_NIL);
+		pushOntoStack(spec, &ptr, ERL_DRV_LIST);
+		pushOntoStack(spec, &ptr, size+1);
+
+
+		// End the tuple
+		pushOntoStack(spec, &ptr, ERL_DRV_TUPLE, 3);
+
+
+		// free memory if needed
+		if (!fid_id) driver_free(fid_id);
+
+		driver_output_term(state->port, spec, spec_len);
+		freeMemory(state);
+		DBUG("Allocated: %i Used : %i\n", spec_len, ptr);
+#endif
 	}else{
 		returnErrorMessage(state, errorToString(NOSUCHDEVICE));
 	}
@@ -377,13 +451,13 @@ void query(KerlData *state) {
 		pushOntoStack(spec, &ptr, ERL_DRV_INT, query->index);
 		// Device listing here
 		if (query->devices & SUPPOSITION) 
-			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("positioning"));
+			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom(PLAYER_POSITION2D_STRING));
 		if (query->devices & SUPLASERS) 
-			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("lasers"));
+			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom(PLAYER_LASER_STRING));
 		if (query->devices & SUPSONAR) 
-			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("sonar"));
+			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom(PLAYER_SONAR_STRING));
 		if (query->devices & SUPFIDUCIAL) 
-			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom("fiducial"));
+			pushOntoStack(spec, &ptr, ERL_DRV_ATOM, driver_mk_atom(PLAYER_FIDUCIAL_STRING));
 		
 		
 		pushOntoStack(spec, &ptr, ERL_DRV_NIL);
