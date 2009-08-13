@@ -360,8 +360,10 @@ void query(KerlData *state) {
 		int listcounter = 0;
 		
 		// counts the number of devices initialised
+		DBUG("devices: %d\n\r", query->devices);
 		for(tdevices = query->devices; tdevices > 0; tdevices = tdevices >> 1)
-			listcounter++;
+			if (tdevices & 1)
+				listcounter++;
 
 		// Size of list + number of devices
 		ErlDrvTermData spec[19+(listcounter<<1)];

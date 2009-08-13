@@ -125,6 +125,7 @@ int createRobot(char* address, int port, int index, char* robotID) {
 			}
 			break;
 		case PLAYER_POSITION2D_CODE:
+			break;
 			if (client->client->devinfos[i].addr.index == index) {
 				DBUG(" AUTOINIT Found device: position2d at %d \r\n", client->client->devinfos[i].addr.index);
 				DBUG("creating positioning device\n\r");
@@ -384,7 +385,8 @@ int queryRobot(char* robotID, ClientQuery* query) {
 	query->index=client->index;
 	query->address=client->address;
 	query->port=client->port;
-	
+	query->devices = 0;
+
 	if (client->position2d)
 		query->devices = query->devices | SUPPOSITION;
 	if (client->laser)
