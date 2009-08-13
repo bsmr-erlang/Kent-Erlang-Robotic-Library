@@ -158,6 +158,27 @@ int laserResultsSize(char* robotID, int *numberOfResults);
  */
 int readLaserResults(char* robotID, double *laserResults, double *laserBearings, int *size);
 
+#ifdef KERLFIDUCUAL
+/**
+ * \fn fiducialResultsSize(char*, int*)
+ * \param robotID an identification for the robot
+ * \param numberOfResults sets this value to the number of beacons
+ * Simply sets the amount of beacons there are to read.
+ * This will need to be called before calling readFiducialResults so you can allocate memory for lasers
+ */
+int fiducialResultsSize(char* robotID, int *numberOfResults);
+
+
+/**
+ * \fn readFiducialResults(char* robotID, int *id,  int *size)
+ * \param robotID an identification for the robot
+ * \param id beacon id
+ * \param size the number of results
+ * Grabs detected devices
+ */
+int readFiducialResults(char* robotID, int *id,  int *size);
+
+#endif
 /**
  * \fn moveCoordinate(char*, double, double, double)
  * \param robotID an identification for the robot

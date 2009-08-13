@@ -30,6 +30,7 @@
 
 -import(mrh, [call_port/2]).
 -export([read_lasers/1,read/2, results/2]).
+-export([read_fiducial/1]).
 -export([read_robots/2,read_devices/2]).
 -export([pread_robots/2,pread_robots/3]).
 -export([find_value/2]).
@@ -58,6 +59,8 @@ read_lasers(Rid) ->
 	call_port(Rid, {results, lasers}).
 
 
+read_fiducial(Rid) ->
+	call_port(Rid, {results, fiducial}).
 
 %% @doc Reads multiple devices from the robot
 %% @spec (RobotID::pid(), Devices::list()) -> [{RobotID::pid(), Device::string(), Results::tuple()}]

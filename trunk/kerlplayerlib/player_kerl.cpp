@@ -329,6 +329,47 @@ int readLaserResults(char* robotID, double *laserResults, double *laserBearings,
 	return SUCCESS;
 }
 
+#ifdef KERLFIDUCUAL
+/**
+ * \fn fiducialResultsSize(char*, int*)
+ * \param robotID an identification for the robot
+ * \param numberOfResults sets this value to the number of beacons
+ * Simply sets the amount of beacons there are to read.
+ * This will need to be called before calling readFiducialResults so you can allocate memory for lasers
+ */
+int fiducialResultsSize(char* robotID, int *numberOfResults) {
+	PlayerClient *client;
+	if ((client = _getClient(robotID))==NULL) return NOSUCHCLIENT;
+	// need to update to get current position
+	UPDATE(robotID)
+
+	if (client->fiducial == NULL) return DEVICENOTINITIALISED;
+	*numberOfResults=client->fiducial->fiducials_count;
+
+	return SUCCESS;
+}
+
+/**
+ * \fn readFiducialResults(char* robotID, int *id,  int *size)
+ * \param robotID an identification for the robot
+ * \param id beacon id
+ * \param size the number of results
+ * Grabs detected devices
+ */
+int readFiducialResults(char* robotID, int *id,  int *size) {
+	PlayerClient *client;
+	int i;
+	player_fiducial_item *item;
+	if ((client = _getClient(robotID))==NULL) return NOSUCHCLIENT;
+	// read laser results
+	for(i = 0; i < *size;i++) {
+		item = &client->fiducial->fiducials[i];
+		id[i]= item->id;
+	}
+	return SUCCESS;
+}
+
+#endif
 
 /**
  * \fn moveCoordinate(char*, double, double, double)
@@ -397,6 +438,9 @@ int queryRobot(char* robotID, ClientQuery* query) {
 #endif
 	return SUCCESS;
 }
+
+
+
 
 
 /***************************** Private Functions ************************************/
