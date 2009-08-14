@@ -125,7 +125,7 @@ int createRobot(char* address, int port, int index, char* robotID) {
 			}
 			break;
 		case PLAYER_POSITION2D_CODE:
-			break;
+
 			if (client->client->devinfos[i].addr.index == index) {
 				DBUG(" AUTOINIT Found device: position2d at %d \r\n", client->client->devinfos[i].addr.index);
 				DBUG("creating positioning device\n\r");
@@ -209,9 +209,12 @@ int move(char* robotID, double speed, double rotation){
 	PlayerClient *client;
 	if ((client = _getClient(robotID))==NULL) return NOSUCHCLIENT;
 	//test if socket is valid	
-	TESTSOCKET(client)
-
-	if (playerc_position2d_set_cmd_vel(client->position2d, speed, 0, DTOR(rotation), 1)) return DEVICENOTINITIALISED; else return SUCCESS;
+	TESTSOCKET(client);
+	DBUG("calling move \n\r");
+	if (playerc_position2d_set_cmd_vel(client->position2d, speed, 0, DTOR(rotation), 1)) 
+		return DEVICENOTINITIALISED; 
+	else 
+		return SUCCESS;
 }
 
 /**
@@ -245,13 +248,13 @@ int rotateDegrees(char* robotID, double degrees) {
  */
 int update(char* robotID) {
 	PlayerClient *client;
-	if ((client = _getClient(robotID))==NULL) return NOSUCHCLIENT;
+	if ((client = _getClient(robotID))== NULL) return NOSUCHCLIENT;
 	// update was called by accident and is not needed so return success
 	if (client->laser == NULL && client->position2d == NULL){
 		DBUG("Not updating, no devices initialised\n\r");
 		return SUCCESS;
 	}
-	DBUG("updating\n");
+	DBUG("updating\n\r");
 
 	//test if socket is valid
 	TESTSOCKET(client)
@@ -260,7 +263,7 @@ int update(char* robotID) {
 	playerc_client_read(client->client);
 	playerc_client_read(client->client);
 	playerc_client_read(client->client);
-
+	DBUG("updated\n\r");
 	return SUCCESS;
 }
 
