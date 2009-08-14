@@ -62,7 +62,7 @@ read_lasers(Rid) ->
 
 %% @doc Reads the fiducial sensors and returns a list of tuples.
 %% tuples are of the form of: <br />
-%% {Id, {Roll, Pitch, Yaw},{UX,UY,UZ},{URoll, UPitch, UYaw}}
+%% {Id, {X, Y, Z}, {Roll, Pitch, Yaw},{UX,UY,UZ},{URoll, UPitch, UYaw}}
 %% Id is 0 when the id of a item is unknown
 %% @spec (RobotId::pid()) -> Fiducials::list() | {error, no_such_device}
 read_fiducial(Rid) ->
