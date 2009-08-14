@@ -1,0 +1,60 @@
+INSTALL
+=======
+
+This guide should help with installing KERL on Fedora Core, Red Hat and other RPM based systems.
+
+This has been tested for the following distrobutions:
+     - Fedora Core 11
+
+However, the same instructions should appy to other distributions
+
+
+Please also refer to INSTALL.txt for more details
+
+DEPENDANCIES
+============
+
+You will need the following
+
+# yum install player
+# yum install gcc
+# yum install gcc-c++
+
+The following may be required to get the Player headers needed to compile KERL
+
+# yum install libtool
+
+You can then get the headers by compiling and installing player stage.
+KERL has only been tested for player-2.1.1 so I advise using this until other versions have been tested.
+This is also the default version that was instaled on Fedora Core 11.
+
+# wget http://kent.dl.sourceforge.net/sourceforge/playerstage/player-2.1.1.tar.bz2
+# tar -xvjf player-2.1.1.tar.bz2
+# cd player-2.1.1
+# ./configure
+# make
+# make install
+
+Running make may fail in error due to some GCC version incompatibilities.
+
+# echo -e "#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <string.h>" >> config.h
+
+Also adding #include <string.h> to some of the source files usually solves the problem.
+
+BUILDING
+========
+
+After you have installed the dependancies you should be able to simply run to install KERL
+
+# make
+
+You can then locate the modules
+
+# cd ./ebin
+
+INSTALLATION
+============
+
+This will be coming soon.
+For now you can cd into ./ebin folder and use KERL from there or manual copy ./ebin and ./lib/kerl.so to somewhere locatable by erlang.
+

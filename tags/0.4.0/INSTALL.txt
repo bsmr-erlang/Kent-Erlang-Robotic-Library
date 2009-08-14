@@ -1,0 +1,108 @@
+INSTALLATION INSTRUCTIONS
+=========================
+
+Copyright (C) 2009 Free Software Foundation, Inc.
+
+This file is free documentation; the Free Software Foundation gives
+unlimited permission to copy, distribute and modify it.
+
+
+DEPENDANCIES
+============
+
+KERL requires Erlang and Player to be installed.
+
+
+You may need to modify the paths located at the top of ./kerlplayerlib/Makefile 
+if your Erlang or Player sources are installed differently.
+
+Below describes the paths you may need to change
+
+P_INCLUDE - players include path
+P_LIB - players library path
+EI_INCLUDE - erlang interfaces include path
+EI_LIB - erlang interfaces library path
+ERL_INCLUDE - erlangs include path
+
+
+BUILDING
+========
+
+Build KERL with 
+
+# make
+
+This will produce erlang beam files in ./module and a driver in ./lib.
+
+
+LOCATING DRIVER
+===============
+
+After building KERL the driver is located in 
+
+./lib/kerl.so
+
+When using KERL it will attempt to find the driver in the following directories:
+
+./lib/,../lib/, ../../lib/, /lib/, /usr/lib/, /usr/local/lib/
+
+Please refer to the code in ./module/driver.erl to add more paths.
+
+The driver can be copied into /usr/local/lib/ by running
+
+# sudo make install
+
+
+INSTALL
+=======
+
+! Installation of KERL is currently still under development
+
+The beam files copied into ./ebin folder and the driver is then placed in 
+/usr/local/lib if possible (requires root privalidges).
+
+# make install
+
+You may wish to copy the ./ebin folder to
+
+
+To make KERL modules visible from erlang path.  First you need locate Erlang's
+lib path which should be something like:
+
+/usr/lib/erlang/lib/
+
+You can then do
+
+# mkdir /usr/lib/erlang/lib/kerl/
+# cp -r ebin/ /usr/lib/erlang/lib/kerl/
+
+Alternatively you can provide the path to KERL ebin folder or run the following 
+from erlang shell
+
+# code:add_path("PATH_TO_KERL/ebin/").
+
+Our examples use the above method.
+
+
+USAGE
+=====
+
+To allow the driver to run concurrently you must use the +A switch like below
+
+# erl +A<number>
+
+We prefer to use 24 asynchronous threads.  You may wish to lower or raise this 
+depending on the speed of your computer.
+
+
+EXAMPLE
+=======
+
+To test multibouncer run its Stage world file and than start it from Erlang.
+
+# player worlds/multibouncer.cfg > /dev/null 2> /dev/null &
+# cd ./examples/
+# erl +A24
+1> multibouncer:start(). 
+
+
