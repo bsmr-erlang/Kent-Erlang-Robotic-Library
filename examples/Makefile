@@ -10,9 +10,12 @@ OPTS= -W
 
 all:
 	$(MAKE) examples
+	$(MAKE) -C traffic
 	$(MAKE) -C wallfollow
 
 examples: ${MODS:%=%.beam}
 
 clean:
 	rm -f *.beam erl_crash.dump
+	$(MAKE) -C traffic clean
+	$(MAKE) -C wallfollow clean
