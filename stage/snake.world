@@ -27,65 +27,88 @@ floorplan
   bitmap "bitmaps/rink.png"
 )
 
-pioneer2dx
+# extend the pioneer2dx definition from pioneer.inc
+#
+define trickedoutpioneer pioneer2dx
+(
+	ranger( alwayson 0 )
+
+  sicklaser( pose [0.030 0 0 0 ]  )
+
+  fiducial( range_max 8 range_max_id 5 ) 
+
+  blobfinder( 
+        channel_count 6 
+        channels [ "red" "blue" "green" "cyan" "yellow" "magenta" ]  
+		  alwayson 0
+    )
+  
+  fiducial_return 17
+  gripper_return 0
+
+  localization "gps"
+  localization_origin [ 0 0 0 ]
+)
+
+trickedoutpioneer
 (		  
   # can refer to the robot by this name
   name "r0"
-
+  fiducial_return 10
   pose [ -3 -2 0 180] 
   sicklaser()
 )
 
-pioneer2dx
+trickedoutpioneer
 (		  
   # can refer to the robot by this name
   name "r1"
-
+  fiducial_return 1
   pose [ -2 -2 0 180] 
   sicklaser()
 )
 
-pioneer2dx
+trickedoutpioneer
 (		  
   # can refer to the robot by this name
   name "r2"
-
+  fiducial_return 2
   pose [ -1 -2 0 180] 
   sicklaser()
 )
 
-pioneer2dx
+trickedoutpioneer
 (		  
   # can refer to the robot by this name
   name "r3"
-
+  fiducial_return 3
   pose [ 0 -2 0 180] 
   sicklaser()
 )
 
-pioneer2dx
+trickedoutpioneer
 (		  
   # can refer to the robot by this name
   name "r4"
-
+  fiducial_return 4
   pose [ 1 -2 0 180] 
   sicklaser()
 )
 
-pioneer2dx
+trickedoutpioneer
 (		  
   # can refer to the robot by this name
   name "r5"
-
+  fiducial_return 5
   pose [ 2 -2 0 180] 
   sicklaser()
 )
 
-pioneer2dx
+trickedoutpioneer
 (		  
   # can refer to the robot by this name
   name "r6"
-
+  fiducial_return 6
   pose [ 3 -2 0 180] 
   sicklaser()
 )
