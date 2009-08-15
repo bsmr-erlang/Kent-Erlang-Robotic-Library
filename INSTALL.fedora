@@ -46,7 +46,7 @@ BUILDING
 
 After you have installed the dependancies you should be able to simply run to install KERL
 
-# ./configure
+# ./configure --prefix=/usr/
 # make
 
 You can then locate the modules

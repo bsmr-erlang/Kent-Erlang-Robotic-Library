@@ -21,7 +21,7 @@ To configure and install KERL modules and driver:
 
 run
 
-./confugure
+./configure --prefix /usr/
 make
 
 
