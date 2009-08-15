@@ -37,9 +37,7 @@ AC_ERLANG_NEED_ERLC()
 #AC_ERLANG_SUBST_LIB_DIR
 
 AC_ERLANG_SUBST_INSTALL_LIB_SUBDIR(kerl, 0.4.0)
-
 ERLANG_INSTALL_LIB_DIR
-
 
 
 # Checks for typedefs, structures, and compiler characteristics.
