@@ -21,7 +21,7 @@ K_INCLUDE= -I../include
 P_INCLUDE=$(shell pkg-config playerc --cflags)
 P_LIB=$(shell pkg-config playerc --libs)
 
-EI_LOCATION=$(shell locate @ERLANG_INSTALL_LIB_DIR@/erl_interface | head -1)
+EI_LOCATION=$(shell locate /erlang/lib/erl_interface | head -1)
 EI_INCLUDE= -I$(EI_LOCATION)/include 
 EI_LIB= -L$(EI_LOCATION)/lib/  -lei
  
