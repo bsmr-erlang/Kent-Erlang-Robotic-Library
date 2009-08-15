@@ -34,7 +34,7 @@ AC_HEADER_STDBOOL
 # Checks for library functions.
 AC_FUNC_MALLOC
 
-AM_INIT_AUTOMAKE([1.9 tar-ustar dist-bzip2])
+
 
 
 AC_CONFIG_FILES([Makefile
