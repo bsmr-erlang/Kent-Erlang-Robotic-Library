@@ -30,7 +30,7 @@ BUILDING
 
 Build KERL with 
 
-# ./configure
+# ./configure --prefix /usr/
 # make
 
 This will produce erlang beam files in ./module and a driver in ./lib.

@@ -2,7 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.63])
-AC_INIT([KERL], [0.4.0], [none])
+
+AC_INIT(FULLPACKAGENAME, VERSION, BUGREPORTADDRESS)
 AC_CONFIG_SRCDIR([kerlplayerlib/driver_kerl.cpp])
 AC_CONFIG_HEADERS([config.h])
 
@@ -14,26 +15,39 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lei':
+
 AC_CHECK_LIB([ei], [ei_encode_string])
-# FIXME: Replace `main' with a function in `-lm':
+
 AC_CHECK_LIB([m], [acos])
-# FIXME: Replace `main' with a function in `-lplayerc':
+
 AC_CHECK_LIB([playerc], [playerc_client_create])
-# FIXME: Replace `main' with a function in `-lplayererror':
+
 AC_CHECK_LIB([playererror], [playerc_error_str])
-# FIXME: Replace `main' with a function in `-lplayerxdr':
+
 AC_CHECK_LIB([playerxdr], [player_foo_pack])
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
+AC_CHECK_HEADERS([erl_driver.h ei.h ])
+AC_CHECK_HEADERS([libplayerc/playerc.h ])
+
+# Can I has Erlang
+AC_ERLANG_NEED_ERLC()
+#AC_ERLANG_SUBST_ROOT_DIR
+#AC_ERLANG_SUBST_LIB_DIR
+#AC_ERLANG_CHECK_LIB(erl_interface)
+AC_ERLANG_SUBST_INSTALL_LIB_SUBDIR(kerl, 0.4.0)
+
+ERLANG_INSTALL_LIB_DIR
+
+
+echo $ERLANG_LIB_DIR
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL
 
 # Checks for library functions.
 AC_FUNC_MALLOC
-
 
 
 
@@ -46,4 +60,5 @@ AC_CONFIG_FILES([Makefile
                  examples/wallfollow/Makefile
                  kerlplayerlib/Makefile
                  module/Makefile])
+
 AC_OUTPUT
