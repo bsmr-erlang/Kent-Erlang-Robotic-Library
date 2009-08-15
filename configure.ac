@@ -17,14 +17,12 @@ AC_PROG_MAKE_SET
 # Checks for libraries.
 
 AC_CHECK_LIB([ei], [ei_encode_string])
-
 AC_CHECK_LIB([m], [acos])
-
 AC_CHECK_LIB([playerc], [playerc_client_create])
-
 AC_CHECK_LIB([playererror], [playerc_error_str])
-
 AC_CHECK_LIB([playerxdr], [player_foo_pack])
+
+
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
@@ -37,7 +35,7 @@ AC_ERLANG_NEED_ERLC()
 #AC_ERLANG_SUBST_LIB_DIR
 
 AC_ERLANG_SUBST_INSTALL_LIB_SUBDIR(kerl, 0.4.0)
-AC_ERLANG_INSTALL_LIB_DIR
+#AC_ERLANG_INSTALL_LIB_DIR
 
 
 # Checks for typedefs, structures, and compiler characteristics.
