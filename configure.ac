@@ -35,13 +35,12 @@ AC_CHECK_HEADERS([libplayerc/playerc.h ])
 AC_ERLANG_NEED_ERLC()
 #AC_ERLANG_SUBST_ROOT_DIR
 #AC_ERLANG_SUBST_LIB_DIR
-#AC_ERLANG_CHECK_LIB(erl_interface)
+
 AC_ERLANG_SUBST_INSTALL_LIB_SUBDIR(kerl, 0.4.0)
 
 ERLANG_INSTALL_LIB_DIR
 
 
-echo $ERLANG_LIB_DIR
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL

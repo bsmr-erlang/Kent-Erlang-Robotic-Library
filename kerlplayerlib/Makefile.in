@@ -10,14 +10,21 @@ CFLAGS= -Wall -fPIC -shared
 # Add device support
 CFLAGS+= -DKERLFIDUCUAL
 
+# These are processed by ./configure
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+ERLANG_INSTALL_LIB_DIR=@ERLANG_INSTALL_LIB_DIR@
+ERLANG_BASE=@ERLANG_INSTALL_LIB_DIR@/../
+
 K_INCLUDE= -I../include
 
-P_INCLUDE= -I /usr/local/share/player/include/player-2.1 -I /usr/include/player-2.1 -I /usr/local/include/player-2.1
-P_LIB= -L /usr/local/share/player/lib/ -L /usr/share/player/lib -lplayerc -lm -lplayerxdr -lplayererror
+P_INCLUDE= $(pkg-config playerc --cflags)
+P_LIB= $(pkg-config playerc --libs)
 
-EI_INCLUDE= -I/usr/lib/erlang/lib/erl_interface-3.5.7/include -I/usr/lib/erlang/lib/erl_interface-3.5.9/include
-EI_LIB= -L/usr/lib/erlang/lib/erl_interface-3.5.7/lib/ -L/usr/lib/erlang/lib/erl_interface-3.5.9/lib/ -lei 
-ERL_INCLUDE= -I/usr/lib/erlang/usr/include
+EI_INCLUDE= -I$(ERLANG_BASE)/lib/erl_interface-*/include 
+EI_LIB= -L$(ERLANG_BASE)/lib/erl_interface*/lib/  -lei 
+ERL_INCLUDE= -I$(ERLANG_BASE)/usr/include
 
 # Mac OS support ~matx
 ifeq ($(shell uname -s),Darwin)
