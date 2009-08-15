@@ -4758,9 +4758,7 @@ else
 $as_echo "$ERLANG_INSTALL_LIB_DIR/kerl-0.4.0" >&6; }
 fi
 
-
 ERLANG_INSTALL_LIB_DIR
-
 
 
 # Checks for typedefs, structures, and compiler characteristics.
