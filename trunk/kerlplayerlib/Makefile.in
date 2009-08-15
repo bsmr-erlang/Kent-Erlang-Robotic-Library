@@ -1,8 +1,7 @@
 # Makefile for KERL
 
-CC=g++
-CFLAGS= -Wall -fPIC -shared
-
+CC=@CXX@
+CFLAGS= @CXXFLAGS@ -Wall -fPIC -shared
 
 ## DEFINITIONS
 # DEBUG switch on debugging
