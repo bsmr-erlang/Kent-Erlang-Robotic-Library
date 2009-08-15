@@ -17,7 +17,13 @@ You may have to build player from source to get the required header files.
 BUILDING
 ========
 
-run 'make' to build KERL driver and modules. 
+To configure and install KERL modules and driver:
+
+run
+
+./confugure
+make
+
 
 INSTALLATION
 ============
