@@ -16,6 +16,8 @@ libdir=@libdir@
 ERLANG_INSTALL_LIB_DIR=@ERLANG_INSTALL_LIB_DIR@
 ERLANG_BASE=@ERLANG_INSTALL_LIB_DIR@/../
 
+KERL_INSTALL_PATH=@ERLANG_INSTALL_LIB_DIR_kerl@
+
 K_INCLUDE= -I../include
 
 P_INCLUDE=$(shell pkg-config playerc --cflags)
@@ -67,6 +69,12 @@ kerl.o: kerl.cpp ../include/common_kerl.h ../include/kerl.h ../include/player_ke
 kerl.so: kerl.cpp driver_kerl.cpp ei_extended.cpp player_kerl.cpp common_kerl.cpp ../include/common_kerl.h ../include/ei_extended.h ../include/kerl.h ../include/player_kerl.h
 	$(CC) $(CFLAGS) $(INCLUDE) -o kerl.so kerl.o player_kerl.o driver_kerl.o  ei_extended.o common_kerl.o $(LIB)
 	cp kerl.so ../lib/
+
+
+install:
+	mkdir -p ${KERL_INSTALL_PATH}/
+	cp -r ../lib ../include ${KERL_INSTALL_PATH}/
+	ln -s ${KERL_INSTALL_PATH}/lib/*.so @libdir@/
 
 clean:
 	rm -f *~ *.so *.o a.out

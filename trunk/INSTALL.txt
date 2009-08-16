@@ -36,8 +36,27 @@ Build KERL with
 This will produce erlang beam files in ./module and a driver in ./lib.
 
 
+ERL INTERFACE
+-------------
+
+If make fails to locate erlang interface you may need to change the prefix in configure.
+The prefix may need to be the root path of
+
+lib/erlang/lib/erl_interface-3.5.9/
+
+if this directory is in 
+
+/usr/lib/erlang/lib/erl_interface-3.5.9/
+
+you need to do the following
+
+# ./configure --prefix /usr/
+
+
 LOCATING DRIVER
-===============
+---------------
+
+In most cases KERL should be able to locate the KERL driver without any modification to the code.
 
 After building KERL the driver is located in 
 
@@ -49,40 +68,22 @@ When using KERL it will attempt to find the driver in the following directories:
 
 Please refer to the code in ./module/driver.erl to add more paths.
 
-The driver can be copied into /usr/local/lib/ by running
-
-# sudo make install
-
 
 INSTALL
 =======
 
-! Installation of KERL is currently still under development
-
-The beam files copied into ./ebin folder and the driver is then placed in 
-/usr/local/lib if possible (requires root privalidges).
+As root run:
 
 # make install
 
-You may wish to copy the ./ebin folder to
+KERL will be installed to erlang library directory.
 
+You can test kerl by running:
 
-To make KERL modules visible from erlang path.  First you need locate Erlang's
-lib path which should be something like:
-
-/usr/lib/erlang/lib/
-
-You can then do
-
-# mkdir /usr/lib/erlang/lib/kerl/
-# cp -r ebin/ /usr/lib/erlang/lib/kerl/
-
-Alternatively you can provide the path to KERL ebin folder or run the following 
-from erlang shell
-
-# code:add_path("PATH_TO_KERL/ebin/").
-
-Our examples use the above method.
+# erl
+Eshell V5.6.5  (abort with ^G)
+1> mrh:start().
+<0.35.0>
 
 
 USAGE

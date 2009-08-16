@@ -34,7 +34,7 @@ all: ${MODS:%=%.beam}
 
 install:
 	mkdir -p ${KERL_INSTALL_PATH}/
-	cp -r ../ebin ../lib ../include ${KERL_INSTALL_PATH}/
+	cp -r ../ebin  ${KERL_INSTALL_PATH}/
 
 clean:
 	rm -f *.beam  {.,../ebin}/*.beam {.,../ebin}/erl_crash.dump \#* *~

@@ -3,6 +3,8 @@ README
 
 KERL is a library and driver to allow robot control using Player from Erlang functional Language.  Please refer to INSTALL for detailed guidelines.
 
+refer to INSTALL.<distrobution> for more complete instructions
+
 PRE INSTALLATION
 ================
 
@@ -80,7 +82,8 @@ stage			- Stage world configurations for testing
 
 USAGE & EXAMPLE
 ===============
-Reffer to INSTALL.txt for more information
+
+Refer to INSTALL.txt for more information
 
 AUTHORS
 =======
