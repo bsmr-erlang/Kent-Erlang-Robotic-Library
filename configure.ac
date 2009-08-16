@@ -27,7 +27,9 @@ AC_CHECK_LIB([playerxdr], [player_foo_pack])
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
 AC_CHECK_HEADERS([erl_driver.h ei.h ])
-AC_CHECK_HEADERS([libplayerc/playerc.h ], /usr/local/share/player)
+AC_CHECK_HEADERS([libplayerc/playerc.h ])
+
+
 
 # Can I has Erlang
 AC_ERLANG_NEED_ERLC()

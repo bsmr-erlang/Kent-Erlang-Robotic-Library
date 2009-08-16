@@ -248,7 +248,7 @@ void kerlResults(KerlData *state){
 
 	if (!strncmp(state->fn, "lasers", 6)) {	
 
-		//only lasers implemented yet
+
 		double *angles;
 		double *results;
 		

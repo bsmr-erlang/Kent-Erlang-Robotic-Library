@@ -11,51 +11,46 @@ However, the same instructions should appy to other distributions
 
 Please also refer to INSTALL.txt for more details
 
+
 DEPENDANCIES
 ============
 
-You will need the following
+Player/Stage can be downloaded from:
+
+  http://pyrorobotics.org/pyro/fedora
+
+
+You will need the following to build KERL
 
 # yum install player
 # yum install gcc
 # yum install gcc-c++
 
-The following may be required to get the Player headers needed to compile KERL
 
-# yum install libtool
-
-You can then get the headers by compiling and installing player stage.
-KERL has only been tested for player-2.1.1 so I advise using this until other versions have been tested.
-This is also the default version that was instaled on Fedora Core 11.
-
-# wget http://kent.dl.sourceforge.net/sourceforge/playerstage/player-2.1.1.tar.bz2
-# tar -xvjf player-2.1.1.tar.bz2
-# cd player-2.1.1
-# ./configure
-# make
-# make install
-
-Running make may fail in error due to some GCC version incompatibilities.
-
-# echo -e "#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <string.h>" >> config.h
-
-Also adding #include <string.h> to some of the source files usually solves the problem.
 
 BUILDING
 ========
 
 After you have installed the dependancies you should be able to simply run to install KERL
 
-# ./configure --prefix=/usr/
+# ./configure
 # make
 
-You can then locate the modules
+Refer to INSTALL.txt if make fails
 
-# cd ./ebin
 
 INSTALLATION
 ============
 
-This will be coming soon.
-For now you can cd into ./ebin folder and use KERL from there or manual copy ./ebin and ./lib/kerl.so to somewhere locatable by erlang.
+As root run
+
+# make install
+
+KERL will be installed onto your system.
+You can test kerl by running:
+
+# erl
+Eshell V5.6.5  (abort with ^G)
+1> mrh:start().
+<0.35.0>
 
