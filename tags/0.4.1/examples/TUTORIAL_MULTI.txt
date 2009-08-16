@@ -1,0 +1,74 @@
+== Tutorial on multi module: multibouncer. ==
+
+After completing bouncer and master-slave example I had an idea to create a bouncing group where every robot could 
+be a master for a turn. The idea is simple: let robots travel in a group and the first one who will see the obstacle 
+will signalize everyone to stop and tell them for how long they have to rotate in order to bounce and stay in the 
+starting formation. I copied the bouncer source code and started to tweak it.
+
+Note: robots should start simultaneously. Since initialization time can vary we need to achieve a synchronous start. 
+This can be done by using multi:barrier() which should be called on every robot in the group. 
+
+1st solution: a time synchronized multibouncer
+
+The idea is simple, the first robot to see the wall tells to stop, determines which side to rotate, broadcasts it, 
+then turns until no wall is in sight and tells everyone stop. Since every robot rotates with the same speed it 
+should be ok to stay in the group. The code is similar to the original bouncer, code. Let`s consider it: 
+multibouncer_time.erl.
+
+The start function simply initializes the driver and create 4 control threads for the 4 robots running 
+multibouncer_time:thread(). The thread function connects to the player/stage robot and goes into loop() function. 
+Note that we call barrier on line 35 to achieve a synchronized start as discussed earlier. The function called 
+travel() is the most important function. One call of it equals travelling to a wall, stopping and rotating until the 
+wall is avoided. Let`s consider it more precisely. 
+The main idea of the function is to realize a non-blocking receive using Erlang`s receive...after construction. 
+While looping through the travel function every thread is equal and tries to receive a {stop} message for 40 ms if 
+there is no wall a wall sensing is perform to find out if an obstacle is close. The robot which discovers the wall 
+for a first time stops, broadcasts a {stop} message and becomes master executing the master function. Robots which 
+received a stop message stop as well and become slaves entering the slave function.
+
+Now master measures the lasers in order to find the rotation direction, this information is broadcasted and all the 
+robots rotate synchronously until a final {stop} message is sent by the master. All the robots should now stop still 
+in perfect formation and loop is called again and a new movement towards a wall starts. 
+If you execute the code you will notice that robots lose their initial formation quickly. This problem is connected 
+with not time-synchronized message propagation. An attentive reader will notice that some more barriers could be 
+used in order to synchronize robots better. We tried these approaches, but they improved the situation only slightly 
+still causing robots to lose the formation and collide after several iterations. Another approach is needed.
+
+2nd solution: position-synchronized multibouncer
+
+The second solution is a light improvement of the first one. The idea is simple: we let every robot save its initial 
+position before the movement begins. Note that every robot has {0,0,0} as starting point since we operate in local 
+odometer coordinate space. The travel function is looped as in the previous example with following modification: 
+slaves wait until the master finishes the wall avoidance procedure. When the wall is avoided every robot computes 
+the difference he moved by subtracting saved position from its current one. The difference of the master is 
+broadcasted and slaves compute their deviance from it. This deviance is fixed using ps:move(difference, ?} function. 
+After the positions are synchronized again we return to the loop and start all over again.
+This version is definitely worth trying out. We observe that the whole system became a little slower ? time for a 
+loop increases because of laborious position corrections. The wasted time is worth the effort: robots will stay in 
+perfect formation from now on. If you run the example for some time (20-30 minutes of emulated time), you will 
+probably notice that sometimes robots ?run out of control? crashing with walls without any noticeable reasons. The 
+reason for it is: sometimes two robots sense wall at the same time and think they were both masters causing complete 
+chaos. This seemingly impossible situation occurs pretty often and has to be fixed.
+
+3rd solution: position synchronization with voting
+
+In order to fix the second solution we will slightly modify it`s code. 
+
+Let us consider the multi:vote function first. This function, like a barrier, has to be called by every member of a 
+dispatcher-group in order to unblock. The second parameter indicates if a process wants to candidate to become a 
+leader. If the process does not want to have a chance to win it still has to acknowledge the dispatcher of this fact 
+in order to maintain fairness. After every process has confirmed the voting the dispatcher picks one of processes 
+randomly, again for fairness reasons, and broadcasts it`s id to the group. 
+We will demonstrate this powerful tool improving the multibouncer. The program flow is same as the 2nd version until 
+a wall is sensed. A potential master cannot know if he is only one and has to warn the group to stop immediately in 
+order to prevent a crash. After everybody is stopped we may have multiple slaves who received at least stop message 
+and multiple possible masters who sensed the wall and eventually received a stop message from another potential 
+master. To resolve the ambiguity a voting is performed now. Slaves don?t participate only confirming the vote 
+procedure. After the voting is finished there is only one master left and all the potential masters call the slave 
+function. Now we need to discard the irritating stop messages, which have been set by multiple potential masters. 
+This is performed by comm:dicard function. Now we can perform the same position syncing as described in the 2nd 
+solution. 
+
+You will find this solution to fulfill the task requirements. We hope that the basics of the multi module and some 
+unexpected concurrency problems are understood better now. 
+

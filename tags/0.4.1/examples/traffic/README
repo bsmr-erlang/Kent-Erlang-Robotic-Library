@@ -1,0 +1,7 @@
+This allows simulation of traffic with traffic lights.
+
+Robots will move around a path.
+Beacons represent traffic lights and can be paired to make cross roads traffic lights.
+A robot should stop and wait at red lights and move at green lights.
+
+
