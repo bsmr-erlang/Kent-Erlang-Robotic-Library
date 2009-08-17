@@ -9,6 +9,7 @@
 -export([crossroad/3, traffic_loop/0, robot/3]).
 
 start() ->
+	code:add_path("../../module/"),code:add_path("../../ebin/"),
 	init([1,2,3,4], [{10, 11}]).
 
 
