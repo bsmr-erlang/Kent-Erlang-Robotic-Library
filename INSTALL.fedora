@@ -33,7 +33,7 @@ BUILDING
 
 After you have installed the dependancies you should be able to simply run to install KERL
 
-# ./configure
+# ./configure --prefix=/usr/
 # make
 
 Refer to INSTALL.txt if make fails
