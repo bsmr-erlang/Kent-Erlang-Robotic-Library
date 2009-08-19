@@ -10,7 +10,7 @@
 
 start() ->
 	code:add_path("../../module/"),code:add_path("../../ebin/"),
-	init([1,2,3,4], [{10, 11}]).
+	init([1,2,3,4,5,6,7,8], [{10, 11}]).
 
 
 init(Robots, Lights) ->
@@ -38,9 +38,9 @@ robot(TrafficServ, Rid) ->
 			mvh:move(Rid, speed, 0);
 		go ->
 			avoid_walls(Rid),
-			mvh:move(Rid, speed, 0.1)
+			mvh:move(Rid, speed, 0.2)
 	end,
-	timer:sleep(100),
+	timer:sleep(50),
 	robot(TrafficServ, Rid).
 	
 
@@ -52,24 +52,26 @@ avoid_walls(Rid) ->
 						  lists:max(lists:sublist(Results, 180, 180))) of
 		{true, Speed} ->
 			mvh:rotate(Rid, speed, Speed),
-			timer:sleep(100),
+			timer:sleep(50),
 			avoid_walls(Rid);
 		_ ->
 			ok
 	end.
 
-choose_direction(Left, _, _, FarRight) when Left < 0.5, FarRight > 2 ->
+choose_direction(Left, _, _, FarRight) when Left < 0.65, FarRight > 2 ->
 	{true, 10};
-choose_direction(_, Right, FarLeft, _) when Right < 0.5, FarLeft > 2 ->
+choose_direction(_, Right, FarLeft, _) when Right < 0.65, FarLeft > 2 ->
 	{true, -10};
 choose_direction(_,_,_,_) ->
 	false.
 
 find_red_light(_,[]) ->
 	go;
-find_red_light(TrafficServ, [{1, {X, Y, _},_,_,_}|_]) when X < 0.5, Y < 0.5 ->
+find_red_light(_, [{1, {X, Y, _},_,_,_}|_]) when abs(X) < 0.6, 
+abs(Y) < 0.6 ->
 	stop;
-find_red_light(TrafficServ, [{Id, {X, Y, _},_,_,_}|More]) when X < 1, Y < 1, Id > 1 ->
+find_red_light(TrafficServ, [{Id, {X, Y, _},_,_,_}|More]) when 
+abs(X) < 1.5, abs(Y) < 1.5, Id > 9 ->
 	TrafficServ ! {colour, self(), Id},
 	receive
 		red ->
@@ -103,7 +105,8 @@ start_crossroad([{LightA, LightB}|Lights]) ->
 crossroad(TrafficServ, LightA, LightB) ->
 	TrafficServ ! {light, switch(LightA)},
 	TrafficServ ! {light, switch(LightB)},
-	timer:sleep(30000),
+	timer:sleep(10000),
+	io:format("switched lightes~n"),
 	crossroad(TrafficServ, switch(LightA), switch(LightB)).
 		   
 
