@@ -831,3 +831,656 @@ plugins.cc:187 trying to load libstageplugin...
 plugins.cc:189 success
 plugins.cc:217 invoking player_driver_init()...
 plugins.cc:233 success
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 1
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 2
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 3
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 1
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 2
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 3
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 1
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 2
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 3
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 1
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 2
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 3
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 1
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 3
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 1
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 2
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 3
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 0
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 1
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 2
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 3
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 4
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 5
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 6
+playertcp.cc:855 read() read zero bytes
+playertcp.cc:467 failed to read from client 7
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+playertcp.cc:291 accepted TCP client 0 on port 6665, fd 17
+playertcp.cc:291 accepted TCP client 1 on port 6665, fd 18
+playertcp.cc:291 accepted TCP client 2 on port 6665, fd 19
+playertcp.cc:291 accepted TCP client 3 on port 6665, fd 20
+playertcp.cc:291 accepted TCP client 4 on port 6665, fd 21
+playertcp.cc:291 accepted TCP client 5 on port 6665, fd 22
+playertcp.cc:291 accepted TCP client 6 on port 6665, fd 23
+playertcp.cc:291 accepted TCP client 7 on port 6665, fd 24
+playertcp.cc:390 closing TCP connection to client 0 on port 6665
+playertcp.cc:390 closing TCP connection to client 1 on port 6665
+playertcp.cc:390 closing TCP connection to client 2 on port 6665
+playertcp.cc:390 closing TCP connection to client 3 on port 6665
+playertcp.cc:390 closing TCP connection to client 4 on port 6665
+playertcp.cc:390 closing TCP connection to client 5 on port 6665
+playertcp.cc:390 closing TCP connection to client 6 on port 6665
+playertcp.cc:390 closing TCP connection to client 7 on port 6665
+plugins.cc:197 loading plugin libstageplugin
+plugins.cc:231 invoking player_driver_init()...
+plugins.cc:247 success
+filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
