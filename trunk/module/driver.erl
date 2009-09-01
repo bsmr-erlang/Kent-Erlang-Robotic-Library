@@ -50,7 +50,7 @@ start() ->
 %% locates and starts the driver
 start(SharedLib) ->
 	?DBUG("Loading driver"),
-	driver_loaded(erl_ddll:load_driver(find_driver(["./lib/","../lib/", "../../lib/", "/lib/", "/usr/lib/", "/usr/local/lib/", "/usr/lib/erlang/lib/kerl/lib/"], SharedLib),
+	driver_loaded(erl_ddll:load_driver(find_driver(["./lib/","../lib/", "../../lib/", "/lib/", "/usr/lib/", "/usr/local/lib/", "/usr/lib/erlang/lib/kerl/lib/", "~/lib/"], SharedLib),
 									  SharedLib), SharedLib).
 
 %% takes a list of directories and returns the directory where the driver was found

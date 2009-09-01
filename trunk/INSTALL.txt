@@ -78,6 +78,25 @@ As root run:
 
 KERL will be installed to erlang library directory.
 
+
+RUNNING IN USERLAND
+===================
+
+You can run kerl in userland by adding to your .bashrc the path to kerls modules
+
+# alias erl="erl +A24 -pa ../../ebin/" >> ~/.bashrc
+
+The driver is searched at paths shown below:
+
+./lib/,../lib/, ../../lib/, /lib/, /usr/lib/, /usr/local/lib/, /usr/lib/erlang/lib/kerl/lib/, ~/lib/
+
+You can either place kerl driver located in ./lib/ into any one of these folders or modify 'driver.erl' start/1 function in module folder.
+
+
+
+TESTING INSTALLATION
+====================
+
 You can test kerl by running:
 
 # erl

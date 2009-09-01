@@ -46,6 +46,11 @@ As root run
 
 # make install
 
+or refer to INSTALL.txt on how to install KERL in userland
+
+TESTING
+=======
+
 KERL will be installed onto your system.
 You can test kerl by running:
 

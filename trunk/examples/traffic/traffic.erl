@@ -9,7 +9,7 @@
 -export([crossroad/3, traffic_loop/0, robot/3]).
 
 start() ->
-	code:add_path("../../module/"),code:add_path("../../ebin/"),
+	% alias erl="erl +A24 -pa ../../ebin/" >> ~/.bashrc # SEE README.txt
 	init([1,2,3,4,5,6,7,8], [{10, 11}]).
 
 
