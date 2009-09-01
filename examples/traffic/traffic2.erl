@@ -96,7 +96,7 @@ collision_avoidance(Robot) ->
 			timer:sleep(50),
 			collision_avoidance(Robot);
 		false ->
-			dumb_detection(Robot)
+			better_detection(Robot)
 	end.
 
 
@@ -131,3 +131,25 @@ dumb_detection(Robot) ->
 			skip
 	end.
 				   
+better_detection(Robot) ->
+	case lists:min(fix_results(dvh:read_lasers(Robot))) of
+		{Distance, Angle} when Distance < 1.4 ->
+			io:format("wall - ~p, > ~p~n", [Distance, Angle]),
+			if 
+				Angle > 0 ->
+					mvh:rotate(Robot, speed, -10);
+				true ->
+					mvh:rotate(Robot, speed, 10)
+			end,
+			timer:sleep(25),
+			collision_avoidance(Robot);
+		_ ->
+			skip
+	end.		
+
+
+% shifts the laser results slightly
+fix_results({[],_}) ->
+	[];
+fix_results({[B|Bearings], [R|Results]}) ->
+	[{R+erlang:abs(B), B}]++fix_results({Bearings, Results}).
