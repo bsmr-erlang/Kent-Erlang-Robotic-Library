@@ -75,7 +75,7 @@ kerl.so: kerl.cpp driver_kerl.cpp ei_extended.cpp player_kerl.cpp common_kerl.cp
 install:
 	mkdir -p ${KERL_INSTALL_PATH}/
 	cp -r ../lib ../include ${KERL_INSTALL_PATH}/
-	ln -s ${KERL_INSTALL_PATH}/lib/*.so @libdir@/
+	ln -sf ${KERL_INSTALL_PATH}/lib/*.so @libdir@/
 
 clean:
 	rm -f *~ *.so *.o a.out
