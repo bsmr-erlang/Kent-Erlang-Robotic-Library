@@ -67,8 +67,10 @@ choose_direction(_,_,_,_) ->
 
 find_red_light(_,[]) ->
 	go;
+
 find_red_light(_, [{1, {X, Y, _},_,_,_}|_]) when abs(X) < 0.6, 
 abs(Y) < 0.6 ->
+
 	stop;
 find_red_light(TrafficServ, [{Id, {X, Y, _},_,_,_}|More]) when 
 abs(X) < 1.5, abs(Y) < 1.5, Id > 9 ->
