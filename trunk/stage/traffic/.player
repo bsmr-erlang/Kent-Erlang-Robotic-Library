@@ -1484,3 +1484,281 @@ plugins.cc:197 loading plugin libstageplugin
 plugins.cc:231 invoking player_driver_init()...
 plugins.cc:247 success
 filewatcher.cc:84 error   : Select called failed in File Watcher: 4 Interrupted system call
+server.cc:177 error   : failed to load config file new.png
+plugins.cc:160 trying to load /home/tom/repos/kerl/trunk/stage/traffic/./libstageplugin...
+plugins.cc:164 failed (/home/tom/repos/kerl/trunk/stage/traffic/./libstageplugin.so: cannot open shared object file: No such file or directory)
+
+plugins.cc:175 trying to load /usr/local/share/player/lib/libstageplugin...
+plugins.cc:179 failed (/usr/local/share/player/lib/libstageplugin.so: cannot open shared object file: No such file or directory)
+
+plugins.cc:187 trying to load libstageplugin...
+plugins.cc:189 success
+plugins.cc:217 invoking player_driver_init()...
+plugins.cc:233 success
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:290 accepted TCP client 1 on port 6665, fd 20
+playertcp.cc:290 accepted TCP client 2 on port 6665, fd 21
+playertcp.cc:290 accepted TCP client 3 on port 6665, fd 22
+playertcp.cc:290 accepted TCP client 4 on port 6665, fd 23
+playertcp.cc:290 accepted TCP client 5 on port 6665, fd 24
+playertcp.cc:290 accepted TCP client 6 on port 6665, fd 25
+playertcp.cc:290 accepted TCP client 7 on port 6665, fd 26
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 1
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 2
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 3
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 4
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 5
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 6
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 7
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:387 closing TCP connection to client 1 on port 6665
+playertcp.cc:387 closing TCP connection to client 2 on port 6665
+playertcp.cc:387 closing TCP connection to client 3 on port 6665
+playertcp.cc:387 closing TCP connection to client 4 on port 6665
+playertcp.cc:387 closing TCP connection to client 5 on port 6665
+playertcp.cc:387 closing TCP connection to client 6 on port 6665
+playertcp.cc:387 closing TCP connection to client 7 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:592 write() failed: Broken pipe
+playertcp.cc:767 warning : failed to write to client 0
+
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:290 accepted TCP client 1 on port 6665, fd 20
+playertcp.cc:290 accepted TCP client 2 on port 6665, fd 21
+playertcp.cc:290 accepted TCP client 3 on port 6665, fd 22
+playertcp.cc:290 accepted TCP client 4 on port 6665, fd 23
+playertcp.cc:290 accepted TCP client 5 on port 6665, fd 24
+playertcp.cc:290 accepted TCP client 6 on port 6665, fd 25
+playertcp.cc:290 accepted TCP client 7 on port 6665, fd 26
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 1
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 2
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 3
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 4
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 5
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 6
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:387 closing TCP connection to client 1 on port 6665
+playertcp.cc:387 closing TCP connection to client 2 on port 6665
+playertcp.cc:387 closing TCP connection to client 3 on port 6665
+playertcp.cc:387 closing TCP connection to client 4 on port 6665
+playertcp.cc:387 closing TCP connection to client 5 on port 6665
+playertcp.cc:387 closing TCP connection to client 6 on port 6665
+plugins.cc:160 trying to load /home/tom/repos/kerl/trunk/stage/traffic/./libstageplugin...
+plugins.cc:164 failed (/home/tom/repos/kerl/trunk/stage/traffic/./libstageplugin.so: cannot open shared object file: No such file or directory)
+
+plugins.cc:175 trying to load /usr/local/share/player/lib/libstageplugin...
+plugins.cc:179 failed (/usr/local/share/player/lib/libstageplugin.so: cannot open shared object file: No such file or directory)
+
+plugins.cc:187 trying to load libstageplugin...
+plugins.cc:189 success
+plugins.cc:217 invoking player_driver_init()...
+plugins.cc:233 success
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:290 accepted TCP client 1 on port 6665, fd 20
+playertcp.cc:290 accepted TCP client 2 on port 6665, fd 21
+playertcp.cc:290 accepted TCP client 3 on port 6665, fd 22
+playertcp.cc:290 accepted TCP client 4 on port 6665, fd 23
+playertcp.cc:290 accepted TCP client 5 on port 6665, fd 24
+playertcp.cc:290 accepted TCP client 6 on port 6665, fd 25
+playertcp.cc:290 accepted TCP client 7 on port 6665, fd 26
+playertcp.cc:456 warning : other error on client 0
+playertcp.cc:456 warning : other error on client 1
+playertcp.cc:456 warning : other error on client 2
+playertcp.cc:456 warning : other error on client 3
+playertcp.cc:456 warning : other error on client 4
+playertcp.cc:456 warning : other error on client 5
+playertcp.cc:456 warning : other error on client 6
+playertcp.cc:456 warning : other error on client 7
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:387 closing TCP connection to client 1 on port 6665
+playertcp.cc:387 closing TCP connection to client 2 on port 6665
+playertcp.cc:387 closing TCP connection to client 3 on port 6665
+playertcp.cc:387 closing TCP connection to client 4 on port 6665
+playertcp.cc:387 closing TCP connection to client 5 on port 6665
+playertcp.cc:387 closing TCP connection to client 6 on port 6665
+playertcp.cc:387 closing TCP connection to client 7 on port 6665
+playertcp.cc:290 accepted TCP client 0 on port 6665, fd 19
+playertcp.cc:290 accepted TCP client 1 on port 6665, fd 20
+playertcp.cc:290 accepted TCP client 2 on port 6665, fd 21
+playertcp.cc:290 accepted TCP client 3 on port 6665, fd 22
+playertcp.cc:290 accepted TCP client 4 on port 6665, fd 23
+playertcp.cc:290 accepted TCP client 5 on port 6665, fd 24
+playertcp.cc:290 accepted TCP client 6 on port 6665, fd 25
+playertcp.cc:290 accepted TCP client 7 on port 6665, fd 26
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 0
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 1
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 2
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 3
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 4
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 5
+playertcp.cc:852 read() read zero bytes
+playertcp.cc:464 failed to read from client 6
+playertcp.cc:387 closing TCP connection to client 0 on port 6665
+playertcp.cc:387 closing TCP connection to client 1 on port 6665
+playertcp.cc:387 closing TCP connection to client 2 on port 6665
+playertcp.cc:387 closing TCP connection to client 3 on port 6665
+playertcp.cc:387 closing TCP connection to client 4 on port 6665
+playertcp.cc:387 closing TCP connection to client 5 on port 6665
+playertcp.cc:387 closing TCP connection to client 6 on port 6665
