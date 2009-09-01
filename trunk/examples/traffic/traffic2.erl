@@ -103,7 +103,7 @@ collision_avoidance(Robot) ->
 see_robot([]) ->
 	false;
 % see robot, calculate distance
-see_robot([{1, {X, Y, _}, _, _, _}|Rest]) ->
+see_robot([{1, {X, Y, _}, {_, _, A}, _, _}|Rest]) when abs(A) < 1 ->
 	case calc_hyp(X, Y) of
 		%  smaller numbers, fidicual results are not in meters
 		D when D < 2 ->
@@ -116,26 +116,13 @@ see_robot([{1, {X, Y, _}, _, _, _}|Rest]) ->
 see_robot([_|Rest]) ->
 	see_robot(Rest).
 
-
-% Simple with only a single direction
-dumb_detection(Robot) ->
-	{_, Results} = dvh:read_lasers(Robot),
-	case lists:min(lists:sublist(Results, 110, 140)) of
-		D when D < 1 ->
-			io:format("wall ~p~n", [D]),
-			mvh:rotate(Robot, speed, 10),
-			timer:sleep(25),
-			collision_avoidance(Robot);
-		_ ->
-			skip
-	end.
 				   
 better_detection(Robot) ->
 	Results = lists:min(fix_results(dvh:read_lasers(Robot))),
 	case Results of
 		{Distance, Angle} when Distance < 1.5 ->
 			io:format("wall - ~p, > ~p~n", [Distance, Angle]),
-			avoid(Robot, Angle, 15);
+			avoid(Robot, Angle, 10);
 		{Distance, Angle} when Distance < 0.1,  Angle > 1 ->
 			io:format("wall - ~p, > ~p~n", [Distance, Angle]),
 			avoid(Robot, Angle, 5);

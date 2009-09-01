@@ -114,7 +114,7 @@ crossroad(TrafficServ, LightA, LightB) ->
 	TrafficServ ! {light, switch(LightA)},
 	timer:sleep(3000), % amber (allow robots to finish crossing)
 	TrafficServ ! {light, switch(LightB)},
-	timer:sleep(20000),
+	timer:sleep(60000),
 	io:format("switched lightes~n"),
 	crossroad(TrafficServ, switch(LightB), switch(LightA)).
 		   
