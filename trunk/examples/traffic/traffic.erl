@@ -105,13 +105,18 @@ start_crossroad([{LightA, LightB}|Lights]) ->
 	T = get(traffic_serv),
 	[spawn(?MODULE, crossroad, [T, {LightA, red}, {LightB, green}])]++start_crossroad(Lights).
 
+%swap, red light first
+crossroad(TrafficServ, {LightA, green}, {LightB, red}) ->
+	crossroad(TrafficServ, {LightB, red}, {LightA, green});
+	
 % controls a pair of traffic lights
 crossroad(TrafficServ, LightA, LightB) ->
 	TrafficServ ! {light, switch(LightA)},
+	timer:sleep(3000), % amber (allow robots to finish crossing)
 	TrafficServ ! {light, switch(LightB)},
-	timer:sleep(10000),
+	timer:sleep(20000),
 	io:format("switched lightes~n"),
-	crossroad(TrafficServ, switch(LightA), switch(LightB)).
+	crossroad(TrafficServ, switch(LightB), switch(LightA)).
 		   
 
 %switches the traffic light colours
