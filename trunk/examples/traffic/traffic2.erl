@@ -7,46 +7,67 @@
 
 
 -export([start/0]).
--export([travel/1]).
+-export([travel/2]).
+
 
 start() ->
 	init([1,2,3,4,5,6,7,8], [{10, 11}]).
 	%init([1], [{10, 11}]).
 
 
-init(Robots, _) ->
-	start_robots(Robots).
+init(Robots, Lights) ->
+	TrafficServ = spawn(traffic, traffic_loop, []),
+	start_crossroad(TrafficServ, Lights),
+	start_robots(Robots, TrafficServ).
 
 
-start_robots(Robots) ->
-	[spawn(?MODULE, travel, [Robot]) || Robot <- rih:plinit(mrh:start(), Robots, [])].
-	%travel(rih:init(mrh:start(), 1)).
+% spawns a new cross road
+start_crossroad(_, []) -> [];
+start_crossroad(TrafficServ, [{LightA, LightB}|Lights]) ->
+	[spawn(traffic, crossroad, [TrafficServ, {LightA, red}, {LightB, green}])]++start_crossroad(TrafficServ, Lights).
+
+
+start_robots(Robots, TrafficServ) ->
+	[spawn(?MODULE, travel, [Robot, TrafficServ]) || Robot <- rih:plinit(mrh:start(), Robots, [])].
+	%travel(rih:init(mrh:start(), 1), TrafficServ).
 	
 
 % initial collision detection
-travel(Robot) ->
+travel(Robot, TrafficServ) ->
 	io:format("tick~n"),
+	find_red_light(Robot, TrafficServ),
 	collision_avoidance(Robot),
-	travel(Robot, mvh:get_position(Robot)).
+	travel(Robot, mvh:get_position(Robot), TrafficServ).
 
-travel(Robot, LastPosition) ->
+travel(Robot, LastPosition, TrafficServ) ->
 	io:format("tick~n"),
 	mvh:move(Robot, speed, 0.2),
 	timer:sleep(50),
 	case distance(Robot, LastPosition) of 
 		% dont really need to do anything if the robot has not moved
 		{stopped, _} ->
-			travel(Robot, LastPosition);
+			travel(Robot, LastPosition, TrafficServ);
 		% This would be a good time to update the laser results
 		{reset, NewPosition} ->
 			collision_avoidance(Robot),
+			find_red_light(Robot, TrafficServ),
 			% The angle of the robot is not needed so no need to update position at this point
-			travel(Robot, NewPosition);
+			travel(Robot, NewPosition, TrafficServ);
 		% Keep moving until robot has moved to destination
 		{continue,_} ->
-			travel(Robot, LastPosition)
+			travel(Robot, LastPosition, TrafficServ)
 	end.
 		
+find_red_light(Robot, TrafficServ) ->
+	case traffic:find_red_light(TrafficServ, dvh:read_fiducial(Robot)) of
+		stop ->
+			mvh:move(Robot, speed, 0),
+			timer:sleep(150),
+			find_red_light(Robot, TrafficServ);
+		go ->
+			skip
+	end.
+
 
 % This is used to decide if the sensors need updating
 distance(Robot, {X, Y, A}) ->
@@ -104,7 +125,7 @@ dumb_detection(Robot) ->
 		D when D < 1 ->
 			io:format("wall ~p~n", [D]),
 			mvh:rotate(Robot, speed, 10),
-			timer:sleep(50),
+			timer:sleep(25),
 			collision_avoidance(Robot);
 		_ ->
 			skip
