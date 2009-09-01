@@ -34,13 +34,12 @@ start_robots(Robots, TrafficServ) ->
 
 % initial collision detection
 travel(Robot, TrafficServ) ->
-	io:format("tick~n"),
+	io:format("initialised~n"),
 	find_red_light(Robot, TrafficServ),
 	collision_avoidance(Robot),
 	travel(Robot, mvh:get_position(Robot), TrafficServ).
 
 travel(Robot, LastPosition, TrafficServ) ->
-	io:format("tick~n"),
 	mvh:move(Robot, speed, 0.2),
 	timer:sleep(50),
 	case distance(Robot, LastPosition) of 
@@ -132,24 +131,36 @@ dumb_detection(Robot) ->
 	end.
 				   
 better_detection(Robot) ->
-	case lists:min(fix_results(dvh:read_lasers(Robot))) of
-		{Distance, Angle} when Distance < 1.4 ->
+	Results = lists:min(fix_results(dvh:read_lasers(Robot))),
+	case Results of
+		{Distance, Angle} when Distance < 1.5 ->
 			io:format("wall - ~p, > ~p~n", [Distance, Angle]),
-			if 
-				Angle > 0 ->
-					mvh:rotate(Robot, speed, -10);
-				true ->
-					mvh:rotate(Robot, speed, 10)
-			end,
-			timer:sleep(25),
-			collision_avoidance(Robot);
+			avoid(Robot, Angle, 15);
+		{Distance, Angle} when Distance < 0.1,  Angle > 1 ->
+			io:format("wall - ~p, > ~p~n", [Distance, Angle]),
+			avoid(Robot, Angle, 5);
 		_ ->
 			skip
 	end.		
 
 
+% 
+avoid(Robot, Angle,  Speed) ->
+	if 
+		Angle > 0 ->
+			mvh:rotate(Robot, speed, -Speed );
+		true ->
+			mvh:rotate(Robot, speed, Speed )
+	end,
+	timer:sleep(25),
+	collision_avoidance(Robot).
+
+
 % shifts the laser results slightly
 fix_results({[],_}) ->
 	[];
+% ignore front lasers when very close, robot can make better direction judgement
+fix_results({[B|Bearings], [R|Results]}) when abs(B) < 0.1, R < 1 ->
+	fix_results({Bearings, Results});
 fix_results({[B|Bearings], [R|Results]}) ->
 	[{R+erlang:abs(B), B}]++fix_results({Bearings, Results}).
