@@ -159,7 +159,7 @@ avoid(Robot, Angle,  Speed) ->
 % shifts the laser results slightly
 fix_results({[],_}) ->
 	[];
-% ignore front lasers when very close, robot can make better direction judgement
+% ignore front lasers when very close, robot can make better direction judgementls 
 fix_results({[B|Bearings], [R|Results]}) when abs(B) < 0.1, R < 1 ->
 	fix_results({Bearings, Results});
 fix_results({[B|Bearings], [R|Results]}) ->
