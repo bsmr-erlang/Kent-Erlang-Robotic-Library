@@ -119,7 +119,7 @@ see_robot([_|Rest]) ->
 				   
 better_detection(Robot) ->
 	Results = lists:min(fix_results(dvh:read_lasers(Robot))),
-	Case Results of
+	case Results of
 		{Distance, Angle} when Distance < 1.5 ->
 			io:format("wall - ~p, > ~p~n", [Distance, Angle]),
 			avoid(Robot, Angle, 10);
