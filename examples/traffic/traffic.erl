@@ -12,7 +12,7 @@
 
 start() ->
 	% alias erl="erl +A24 -pa ../../ebin/" >> ~/.bashrc # SEE README.txt
-	init([1,2,3,4,5,6,7,8], [{10, 11}]).
+	init([1,2,3,4,5,6,7,8, 9], [{10, 11}]).
 
 
 init(Robots, Lights) ->
@@ -112,7 +112,7 @@ crossroad(TrafficServ, {LightA, green}, {LightB, red}) ->
 % controls a pair of traffic lights
 crossroad(TrafficServ, LightA, LightB) ->
 	TrafficServ ! {light, switch(LightA)},
-	timer:sleep(3000), % amber (allow robots to finish crossing)
+	timer:sleep(100000), % amber (allow robots to finish crossing)
 	TrafficServ ! {light, switch(LightB)},
 	timer:sleep(60000),
 	io:format("switched lightes~n"),

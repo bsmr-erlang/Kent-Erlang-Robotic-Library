@@ -11,7 +11,7 @@
 
 
 start() ->
-	init([1,2,3,4,5,6,7,8], [{10, 11}]).
+	init([1,2,3,4,5,6,7,8,9,10,11], [{10, 11}]).
 	%init([1], [{10, 11}]).
 
 
@@ -32,6 +32,11 @@ start_robots(Robots, TrafficServ) ->
 	%travel(rih:init(mrh:start(), 1), TrafficServ).
 	
 
+% Dont move unitialised robots
+travel({error, robot_not_found}, _) ->
+	skip;
+travel({error, Error}, _) ->
+	io:format("not initialised ~p~n", [Error]);
 % initial collision detection
 travel(Robot, TrafficServ) ->
 	io:format("initialised~n"),
@@ -40,7 +45,7 @@ travel(Robot, TrafficServ) ->
 	travel(Robot, mvh:get_position(Robot), TrafficServ).
 
 travel(Robot, LastPosition, TrafficServ) ->
-	mvh:move(Robot, speed, 0.2),
+	mvh:move(Robot, speed, (random:uniform(10)+10)/100),
 	timer:sleep(50),
 	case distance(Robot, LastPosition) of 
 		% dont really need to do anything if the robot has not moved
