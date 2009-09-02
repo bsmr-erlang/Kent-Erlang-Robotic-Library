@@ -119,7 +119,7 @@ see_robot([_|Rest]) ->
 				   
 better_detection(Robot) ->
 	Results = lists:min(fix_results(dvh:read_lasers(Robot))),
-	case Results of
+	Case Results of
 		{Distance, Angle} when Distance < 1.5 ->
 			io:format("wall - ~p, > ~p~n", [Distance, Angle]),
 			avoid(Robot, Angle, 10);
@@ -144,6 +144,7 @@ avoid(Robot, Angle,  Speed) ->
 
 
 % shifts the laser results slightly
+% this might be able to be done with zip and map
 fix_results({[],_}) ->
 	[];
 % ignore front lasers when very close, robot can make better direction judgementls 
