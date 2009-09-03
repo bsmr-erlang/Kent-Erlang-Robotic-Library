@@ -1,0 +1,61 @@
+INSTALL
+=======
+
+This guide should help with installing KERL on Fedora Core, Red Hat and other RPM based systems.
+
+This has been tested for the following distrobutions:
+     - Fedora Core 11
+
+However, the same instructions should appy to other distributions
+
+
+Please also refer to INSTALL.txt for more details
+
+
+DEPENDANCIES
+============
+
+Player/Stage can be downloaded from:
+
+  http://pyrorobotics.org/pyro/fedora
+
+
+You will need the following to build KERL
+
+# yum install player
+# yum install gcc
+# yum install gcc-c++
+
+
+
+BUILDING
+========
+
+After you have installed the dependancies you should be able to simply run to install KERL
+
+# ./configure --prefix=/usr/
+# make
+
+Refer to INSTALL.txt if make fails
+
+
+INSTALLATION
+============
+
+As root run
+
+# make install
+
+or refer to INSTALL.txt on how to install KERL in userland
+
+TESTING
+=======
+
+KERL will be installed onto your system.
+You can test kerl by running:
+
+# erl
+Eshell V5.6.5  (abort with ^G)
+1> mrh:start().
+<0.35.0>
+

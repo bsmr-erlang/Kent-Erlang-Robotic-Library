@@ -1,0 +1,81 @@
+# Makefile for KERL
+
+CC=@CXX@
+CFLAGS= @CXXFLAGS@ -Wall -fPIC -shared
+
+## DEFINITIONS
+# DEBUG switch on debugging
+#CFLAGS+= -DDEBUG
+# Add device support
+CFLAGS+= -DKERLFIDUCUAL
+
+# These are processed by ./configure
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+ERLANG_INSTALL_LIB_DIR=@ERLANG_INSTALL_LIB_DIR@
+ERLANG_BASE=@ERLANG_INSTALL_LIB_DIR@/../
+
+KERL_INSTALL_PATH=@ERLANG_INSTALL_LIB_DIR_kerl@
+
+K_INCLUDE= -I../include
+
+P_INCLUDE=$(shell pkg-config playerc --cflags)
+P_LIB=$(shell pkg-config playerc --libs)
+
+EI_LOCATION=$(shell find @ERLANG_INSTALL_LIB_DIR@ -type d -name "erl_interface*" | head -1)
+
+EI_INCLUDE= -I$(EI_LOCATION)/include 
+EI_LIB= -L$(EI_LOCATION)/lib/  -lei
+ 
+ERL_INCLUDE= -I$(ERLANG_BASE)/usr/include
+
+# Mac OS support ~matx
+ifeq ($(shell uname -s),Darwin)
+# Erlang reports undefined symbols, apparently its invalid so use the following
+CFLAGS+= -bundle -flat_namespace -undefined suppress
+#FIXME: My mac does have path correctly set up.
+P_INCLUDE=$(shell PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/ pkg-config playerc --cflags)
+P_LIB=$(shell PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/ pkg-config playerc --libs)
+endif
+
+INCLUDE= $(ERL_INCLUDE) $(EI_INCLUDE) $(P_INCLUDE) $(K_INCLUDE)
+LIB= $(EI_LIB) $(P_LIB)
+
+PROJ_LIB= kerl
+PROJ_OBJECT= common_kerl player_kerl ei_extended driver_kerl $(PROJ_LIB)
+
+all:
+	$(MAKE) object
+	$(MAKE) library
+
+object: ${PROJ_OBJECT:%=%.o} 
+library: ${PROJ_LIB:%=%.so}  
+
+common_kerl.o: common_kerl.cpp ../include/common_kerl.h
+	$(CC) $(CFLAGS) $(INCLUDE) -c common_kerl.cpp
+
+player_kerl.o: player_kerl.cpp ../include/common_kerl.h ../include/player_kerl.h
+	$(CC) $(CFLAGS) $(INCLUDE) -c player_kerl.cpp
+
+ei_extended.o: ei_extended.cpp ../include/common_kerl.h ../include/kerl.h
+	$(CC) $(CFLAGS) $(INCLUDE) -c ei_extended.cpp
+
+driver_kerl.o: driver_kerl.cpp ../include/common_kerl.h ../include/ei_extended.h ../include/kerl.h
+	$(CC) $(CFLAGS) $(INCLUDE) -c driver_kerl.cpp
+
+kerl.o: kerl.cpp ../include/common_kerl.h ../include/kerl.h ../include/player_kerl.h
+	$(CC) $(CFLAGS) $(INCLUDE) -c kerl.cpp
+
+kerl.so: kerl.cpp driver_kerl.cpp ei_extended.cpp player_kerl.cpp common_kerl.cpp ../include/common_kerl.h ../include/ei_extended.h ../include/kerl.h ../include/player_kerl.h
+	$(CC) $(CFLAGS) $(INCLUDE) -o kerl.so kerl.o player_kerl.o driver_kerl.o  ei_extended.o common_kerl.o $(LIB)
+	cp kerl.so ../lib/
+
+
+install:
+	mkdir -p ${KERL_INSTALL_PATH}/
+	cp -r ../lib ../include ${KERL_INSTALL_PATH}/
+	ln -sf ${KERL_INSTALL_PATH}/lib/*.so @libdir@/
+
+clean:
+	rm -f *~ *.so *.o a.out

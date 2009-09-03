@@ -1,0 +1,40 @@
+.SUFFIXES: .erl .beam .yrl
+
+CC=@ERLC@
+OUTDIR = ../ebin
+
+MODS= $(OUTDIR)/driver \
+	$(OUTDIR)/trimaths \
+	$(OUTDIR)/mrh \
+	$(OUTDIR)/rih \
+	$(OUTDIR)/mvh \
+	$(OUTDIR)/dvh \
+	$(OUTDIR)/player \
+	$(OUTDIR)/multi \
+	$(OUTDIR)/memo \
+	$(OUTDIR)/comm
+
+# These are processed by ./configure
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+
+ERLANG_INSTALL_LIB_DIR=@ERLANG_INSTALL_LIB_DIR@
+KERL_INSTALL_PATH=@ERLANG_INSTALL_LIB_DIR_kerl@
+
+EFLAGS= -W -o $(OUTDIR) +warn_unused_vars +nowarn_shadow_vars +warn_unused_import
+
+#OPTS+= -Ddebug
+# debug turns debugging on
+
+$(OUTDIR)/%.beam:	%.erl
+	$(CC) $(EFLAGS) $<
+
+all: ${MODS:%=%.beam}
+
+install:
+	mkdir -p ${KERL_INSTALL_PATH}/
+	cp -r ../ebin  ${KERL_INSTALL_PATH}/
+
+clean:
+	rm -f *.beam  {.,../ebin}/*.beam {.,../ebin}/erl_crash.dump \#* *~

@@ -1,0 +1,60 @@
+\documentclass[a4paper,11pt,dvips]{article}
+
+\title{Installing Player/Stage on a Ubuntu server running in VMware Player}
+\author{Sten Gr\"{u}ner}
+\date{03.06.2009}
+
+%%for urls
+\usepackage{hyperref} 
+
+\begin{document}
+
+%small command for prompt listings
+\newcommand{\prompt}[1]{
+	\begin{center}
+	\texttt{\$#1}
+	\end{center}
+}
+
+\maketitle
+
+\section{Introduction}
+In this step-by-step guide I will show you how to install player/stage on a fresh and minimal Ubuntu installation running in a virtual machine. After completing the tutorial you will be able to start working with Player/Stage and Erlang modules we have written for it. All software used here is freeware. You will need about 2.5 GB space on your hard drive.
+
+\section{Virtual Machine}
+\subsection{VMware Player}
+We have tested our system using VMware Player which can be obtained here: http://www.vmware.com/products/player/. Install the VMware player.
+\subsection{Ubuntu Server}
+We recommend to download the pre-installed VM instead of installing Ubuntu from an .iso image. An archive with the VM can be obtained here: \\ http://chrysaor.info/?page=ubuntu. Select "Ubuntu 8.04.1 Server VMware image", unpack the archive and double click the file "Ubuntu.vmx". VMware player will start (\textbf{Important:} select "I moved it" when VMware asks) and boot Ubuntu server.
+
+\section{Ubuntu cofiguration}
+Login using user name \texttt{user} and password \texttt{user}. 
+\\Obtain the configuration script made by Tom (\$ symbolizes the terminal promt): 
+\prompt{wget http://kerl.svn.sourceforge.net/viewvc/kerl/trunk/install/installvm.sh}
+Make the script executable:
+\prompt{chmod a+x installvm.sh}
+Start the script (root password is \texttt{user}):
+\prompt{sudo ./installvm.sh}
+The script will install xfce and update your copy of Ubuntu. Select "Continue without a valid swap space" if prompted. Do not worry if "VMware tools not found" is prompted, VMware tools are not available for VMware player.
+\\
+Reboot the system:
+\prompt{sudo reboot}
+After reboot you should see a login screen on xfce. After logging in add a task panel: right-click on the "star" you can find in the upper edge, select "Add New Item", select "Task List" and click "Add".
+
+
+\section{Player/Stage}
+Start a terminal window: right-click on desktop, select "Accessories" $\to$ "Terminal". Download the installation script:
+\prompt{wget http://kerl.svn.sourceforge.net/viewvc/kerl/trunk/install/installps.sh}
+Make the script executable:
+\prompt{chmod a+x installps.sh}
+Start the script:
+\prompt{sudo ./installps.sh}
+The script will check all packages needed for Player/Stage. Then it will install Player 2.1.2 into \texttt{/usr/share/player} and Stage 3.0.1 into \texttt{/ust/share/stage}. Source directories will stay in your home directory since they contain documentation and examples. The sctipt will also install Erlang and everything else needed to start programming.
+\\
+After installing, close the terminal window and open a now one: right-click on desktop, select "Accessories" $\to$ "Terminal".
+
+\section{Test your installation}
+Try to start player and stage:
+\prompt{player}
+\prompt{stage}
+\end{document}

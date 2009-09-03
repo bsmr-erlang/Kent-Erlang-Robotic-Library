@@ -1,0 +1,6 @@
+%** this is the overview.doc file for the application 'frob' **
+
+@author Thomas Lorentsen, Sten Gruener
+@title Kent Erlang Robotics Library
+@doc 
+The modules described for Kent Erlang Robotics Library (KERL) allow you to control a robot on a Player server.
