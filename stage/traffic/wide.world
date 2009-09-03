@@ -88,7 +88,7 @@ trickedoutpioneer
   # can refer to the robot by this name
   name "r2"
   fiducial_return 1
-  pose [ 0.271 -2.944 0 -90.000] 
+  pose [ 0.271 -2.944 0 -80.000] 
  
 )
 
@@ -160,7 +160,7 @@ trickedoutpioneer
   # can refer to the robot by this name
   name "r10"
   fiducial_return 1
-  pose [ 10.8 2 0 90.752] 
+  pose [ 10.8 2 0 80.752] 
  
 )
 
@@ -169,6 +169,6 @@ trickedoutpioneer
   # can refer to the robot by this name
   name "r11"
   fiducial_return 1
-  pose [ 4.8 5 0 180] 
+  pose [ 4.8 5 0 170] 
  
 )
