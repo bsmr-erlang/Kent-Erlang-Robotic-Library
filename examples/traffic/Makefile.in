@@ -1,7 +1,7 @@
 .SUFFIXES: .erl .beam .yrl
 
 CC=erlc 
-MODS= traffic
+MODS= traffic traffic2
 OPTS= -W
 #OPTS+= -Debug
 
