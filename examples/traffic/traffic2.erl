@@ -45,7 +45,7 @@ travel(Robot, TrafficServ) ->
 	travel(Robot, mvh:get_position(Robot), TrafficServ).
 
 travel(Robot, LastPosition, TrafficServ) ->
-	mvh:move(Robot, speed, (random:uniform(10)+10)/100),
+	mvh:move(Robot, speed, (random:uniform(10)+40)/100),
 	timer:sleep(50),
 	case distance(Robot, LastPosition) of 
 		% dont really need to do anything if the robot has not moved
