@@ -40,12 +40,12 @@ travel({error, Error}, _) ->
 % initial collision detection
 travel(Robot, TrafficServ) ->
 	io:format("initialised~n"),
-	find_red_light(Robot, TrafficServ),
+	find_red_light(Robot, TrafficServ), 
 	collision_avoidance(Robot),
 	travel(Robot, mvh:get_position(Robot), TrafficServ).
 
 travel(Robot, LastPosition, TrafficServ) ->
-	mvh:move(Robot, speed, (random:uniform(10)+10)/100),
+	mvh:move(Robot, speed, (random:uniform(5)+10)/100),
 	timer:sleep(50),
 	case distance(Robot, LastPosition) of 
 		% dont really need to do anything if the robot has not moved
